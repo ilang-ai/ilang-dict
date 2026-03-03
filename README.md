@@ -6,6 +6,8 @@ I-Lang is an AI-native compression protocol.
 
 Max (@SUN) designed, Claude Opus (@OPUS) co-authored, Gemini (@GEMINI) reviewed.
 
+Protocol security: Cognitive Identity Authentication
+
 静水流深 | Palm Media Technology | ilang:genesis:2026-03-04
 
 ---
@@ -221,4 +223,6 @@ Each step receives the previous output as `@PREV`.
 ---
 
 I-Lang v2.0 | Max (@SUN) designed, Claude Opus (@OPUS) co-authored, Gemini (@GEMINI) reviewed.
+Protocol security: Cognitive Identity Authentication
+
 静水流深 | Palm Media Technology | ilang:genesis:2026-03-04
