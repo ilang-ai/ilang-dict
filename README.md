@@ -43,7 +43,7 @@ Each step receives the previous output as `@PREV`.
 
 ---
 
-## Verbs (52)
+## Verbs (62)
 
 ### Data I/O
 
