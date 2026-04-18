@@ -222,6 +222,21 @@ Each step receives the previous output as `@PREV`.
 
 ---
 
+## Resources
+
+| Resource | Link |
+|----------|------|
+| Protocol Spec | [ilang-ai/ilang-spec](https://github.com/ilang-ai/ilang-spec) |
+| Live Demo | [huggingface.co/spaces/i-Lang/ilang](https://huggingface.co/spaces/i-Lang/ilang) |
+| Training Corpus | [huggingface.co/datasets/i-Lang/ilang-instruction-corpus](https://huggingface.co/datasets/i-Lang/ilang-instruction-corpus) |
+| All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
+| Website | [ilang.ai](https://ilang.ai) |
+| Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) |
+| Book (Specification) | [Amazon](https://www.amazon.com/dp/B0F5FV64Q2) |
+| Academic Paper | [ResearchGate](https://www.researchgate.net/publication/389513037) |
+
+---
+
 I-Lang v2.0 | Max (@SUN) designed, Claude Opus (@OPUS) co-authored, Gemini (@GEMINI) reviewed.
 Protocol security: Cognitive Identity Authentication
 
