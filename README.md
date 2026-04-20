@@ -1,23 +1,21 @@
-# I-Lang Dictionary v2.0 — PUBLIC
+# I-Lang Dictionary v3.0
 
 ## Genesis
 
-I-Lang is an AI-native compression protocol.
+I-Lang is an AI-native communication protocol.
 
-Max (@SUN) designed, Claude Opus (@OPUS) co-authored, Gemini (@GEMINI) reviewed.
+Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 
-Protocol security: Cognitive Identity Authentication
-
-静水流深 | Palm Media Technology | ilang:genesis:2026-03-04
+Eastsoft Inc. | Palm Media Technology | ilang:v3.0:2026-04-20
 
 ---
 
 ## Syntax
 
-### Single operation
+### Operation (what something DOES)
 
 ```
-[VERB:@ENTITY|mod1=val1,mod2=val2]
+[VERB:@TARGET|mod1=val1,mod2=val2]
 ```
 
 ### Pipe chain
@@ -28,183 +26,249 @@ Protocol security: Cognitive Identity Authentication
 
 Each step receives the previous output as `@PREV`.
 
-### Urgency prefix
+### Declaration (what something IS)
 
 ```
-!! = high priority
+::STATE{@ENTITY, key:value}
+::GENE{name|conf:level|scope:context}
+  T:trait_description
+  A:anti_pattern⇒consequence
 ```
 
 ### Conventions
 
-- Verbs: UPPERCASE or Greek symbols
-- Entities: `@` prefix, UPPERCASE
-- Modifiers: lowercase, comma-separated
+- Verbs: UPPERCASE
+- Entities: `@` + UPPERCASE
+- Modifiers: lowercase
 - Pipes: `=>` connects operations left to right
 
 ---
 
-## Verbs (62)
+## Verbs (88)
 
-### Data I/O
+### Data I/O (12)
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| READ | Read from source | `[READ:@GH|path=config.json]` |
-| WRIT | Write to destination | `[WRIT:@R2|path=out.md]` |
-| DEL | Delete | `[DEL:@LOCAL|path=tmp.log]` |
-| LIST | List contents | `[LIST:@DRIVE|mch="*.pdf"]` |
-| COPY | Copy | `[COPY:@R2|dst=@LOCAL]` |
-| MOVE | Move | `[MOVE:@LOCAL|dst=@R2]` |
-| STRM | Stream data | `[STRM:@ISEE|url=tgt]` |
-| CACH | Cache | `[CACH:user_data|ttl=3600]` |
-| SYNC | Synchronize | `[SYNC:@LOCAL|dst=@R2]` |
-| Π | Batch process | `[Π:data_list|action=READ]` |
+| Verb | Alias | Target is | Meaning |
+|------|-------|-----------|---------|
+| READ | | source | Read content from source |
+| WRIT | | destination | Write input to destination |
+| GET | | source | Fetch remote resource |
+| DEL | | destination | Delete target |
+| LIST | | source | Enumerate items in container |
+| COPY | | destination | Copy without deleting source |
+| MOVE | | destination | Move from source to destination |
+| STRM | | source | Stream data |
+| CACH | | n/a | Cache for fast retrieval |
+| SYNC | | destination | Synchronize source and destination |
+| SEND | | destination | Transmit to destination |
+| RUN | | n/a | Execute command or script |
 
-### Transform
+### Transform (22)
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| Σ | Merge / Summarize | `[Σ:@PREV|len=3]` |
-| Δ | Difference | `[Δ:@old|dst=@new]` |
-| φ | Filter | `[φ:@data|whr="type=ai"]` |
-| ∇ | Sort / Rank | `[∇:@data|srt=date]` |
-| DEDU | Deduplicate | `[DEDU:@list|key=id]` |
-| ∂ | Split / Extract | `[∂:@text|delim=","]` |
-| CHNK | Chunk | `[CHNK:@text|cap=1000]` |
-| FLAT | Flatten | `[FLAT:@json|dep=2]` |
-| NEST | Nest | `[NEST:@csv|key=category]` |
-| λ | Map / Apply | `[λ:@array|func=upper]` |
-| REDU | Reduce | `[REDU:@array|func=sum]` |
-| PIVT | Pivot | `[PIVT:@data|col=month]` |
-| TRNS | Transpose | `[TRNS:@matrix]` |
-| ENCD | Encode | `[ENCD:@text|enc=base64]` |
-| DECD | Decode | `[DECD:@b64|enc=utf8]` |
-| ξ | Hash / Encrypt | `[ξ:@pwd|algo=sha256]` |
-| ζ | Compress | `[ζ:@data|algo=gzip]` |
-| EXPN | Decompress | `[EXPN:@gz]` |
-| θ | Translate | `[θ:@text|lng=zh]` |
-| FMT | Format | `[FMT:@raw|fmt=md]` |
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| FMT | | Reformat into target format |
+| CONV | | Convert type or representation |
+| SPLIT | ∂ | Split by delimiter or rule |
+| MERGE | Σ | Merge multiple items into one |
+| MAP | λ | Apply function to each element |
+| FILT | φ | Filter by condition |
+| SORT | ∇ | Sort by field or rule |
+| DEDU | | Remove duplicates |
+| FLAT | | Flatten nested data |
+| NEST | | Nest flat data by key |
+| CHNK | | Chunk into sized pieces |
+| REDU | | Reduce to single value |
+| PIVT | | Pivot data by column |
+| TRNS | | Transpose |
+| ENCD | | Encode (base64, hex) |
+| DECD | | Decode |
+| HASH | ξ | Hash (one-way digest) |
+| CMPR | ζ | Compress (gzip, etc.) |
+| EXPN | | Decompress |
+| XLAT | θ | Translate between languages |
+| REWR | | Rewrite preserving meaning |
+| DIFF | Δ | Show differences |
 
-### Analysis
+### Analysis (17)
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| ψ | Sentiment | `[ψ:@tweet]` |
-| CLST | Cluster | `[CLST:@users|k=5]` |
-| SCOR | Score | `[SCOR:@draft|metric=quality]` |
-| BNCH | Benchmark | `[BNCH:@func|n=100]` |
-| AUDT | Audit | `[AUDT:@GH|scp=global]` |
-| VALD | Validate | `[VALD:@json|sch=api_v2]` |
-| CNT | Count | `[CNT:@list|whr="active=true"]` |
-| μ | Average | `[μ:@stats|col=latency]` |
-| TRND | Trend | `[TRND:@sales|frm=30d]` |
-| CORR | Correlate | `[CORR:@data|col=x,y]` |
-| FRCS | Forecast | `[FRCS:@stock|to=7d]` |
-| ANOM | Anomaly detect | `[ANOM:@logs|thr=3σ]` |
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| SCAN | | Examine for patterns or features |
+| MTCH | | Find matching elements |
+| CNT | | Count items or occurrences |
+| STAT | μ | Compute statistics |
+| EVAL | | Assess against criteria |
+| SCOR | | Score against metric |
+| RANK | | Order by priority or score |
+| TRND | | Detect trend |
+| CORR | | Correlate variables |
+| FRCS | | Forecast |
+| ANOM | | Detect anomalies |
+| SENT | ψ | Sentiment analysis |
+| CLST | | Cluster |
+| BNCH | | Benchmark |
+| AUDT | | Audit |
+| VALD | | Validate against schema or rule |
+| CLSF | | Classify into categories |
 
-### Generation
+### Generation (10)
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| CREA | Create | `[CREA:@GH|type=repo]` |
-| DRFT | Draft | `[DRFT:marketing|len=med]` |
-| PARA | Paraphrase | `[PARA:@text|ton=casual]` |
-| EXTD | Extend | `[EXTD:@summary|len=long]` |
-| SHRT | Shorten | `[SHRT:@article|len=short]` |
-| STYL | Style | `[STYL:@draft|sty=ap]` |
-| TMPL | Template | `[TMPL:@invoice|data=@SRC]` |
-| FILL | Fill | `[FILL:@form|strategy=infer]` |
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| CREA | | Create new resource |
+| DRFT | | Generate first draft |
+| EXPD | | Expand with detail |
+| SHRT | | Shorten or condense |
+| PARA | | Paraphrase |
+| STYL | | Apply style |
+| TMPL | | Apply template |
+| FILL | | Fill form or structure |
+| EXTC | | Extract specific data |
+| GEN | | Generic generate |
 
-### Output
+### Execute (12)
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| Ω | Output | `[Ω:@RESULT]` |
-| DISP | Display | `[DISP:dashboard_1]` |
-| EXPT | Export | `[EXPT:@data|fmt=csv]` |
-| PRNT | Print | `[PRNT:"Done"]` |
-| LOG | Log | `[LOG:@error|lvl=warn]` |
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| PLAN | | Design approach |
+| DECI | | Choose between options |
+| CHEK | | Verify condition |
+| FIX | | Repair errors |
+| DPLO | | Deploy to production |
+| SAVE | | Persist to storage |
+| REVW | | Review completed work |
+| LERN | | Update internal model |
+| TEST | | Verify functionality |
+| PARS | | Parse structured input |
+| LOOP | | Repeat operation over set |
+| WAIT | | Pause for condition |
 
-### Meta
+### Output (5)
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| VERS | Version | `[VERS]` |
-| HELP | Help | `[HELP:SCRP]` |
-| DESC | Describe | `[DESC:@GH]` |
-| INTR | Introspect | `[INTR:memory]` |
-| SELF | Self-check | `[SELF:latency]` |
-| ECHO | Echo | `[ECHO:@SRC]` |
-| NOOP | No operation | `[NOOP]` |
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| OUT | Ω | Mark final output |
+| DISP | | Display to user |
+| EXPT | | Export to file format |
+| PRNT | | Print message |
+| LOG | | Log event or state |
+
+### Structure (5)
+
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| LINK | | Create connection |
+| SET | | Assign value |
+| TAG | | Attach metadata |
+| GRP | | Group by criterion |
+| EMBD | | Encode into vector space |
+
+### Meta (4)
+
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| HELP | | Show help |
+| DESC | | Describe entity |
+| INTR | | Introspect internal state |
+| NOOP | | No operation |
+
+### Batch (1)
+
+| Verb | Alias | Meaning |
+|------|-------|---------|
+| BATC | Π | Apply verb to each item in list |
 
 ---
 
-## Modifiers (28)
+## Aliases
+
+| Alias | Verb | Alias | Verb |
+|-------|------|-------|------|
+| Σ | MERGE | ψ | SENT |
+| Δ | DIFF | ξ | HASH |
+| φ | FILT | ζ | CMPR |
+| ∇ | SORT | θ | XLAT |
+| λ | MAP | Ω | OUT |
+| ∂ | SPLIT | Π | BATC |
+| μ | STAT | | |
+
+---
+
+## Modifiers (29)
 
 | Mod | Meaning | Values |
 |-----|---------|--------|
-| tgt | Target | entity_id, path |
-| src | Source | entity_id, uri |
-| dst | Destination | entity_id, uri |
-| frm | From | timestamp |
-| to | To | timestamp |
-| scp | Scope | global, local, strict |
-| dep | Depth | integer |
-| rng | Range | start:end |
-| whr | Where | condition_string |
-| mch | Match | regex_string |
-| exc | Exclude | regex_string |
+| src | Explicit source | entity, URI |
+| dst | Explicit destination | entity, URI |
+| path | Path within entity | string |
+| fmt | Output format | text, json, md, csv, xml, html, email |
+| lng | Language | ISO 639-1 (en, zh, ja) |
+| sty | Style | pro, casual, code, bullets |
+| ton | Tone | urgent, neutral, formal |
+| len | Length target | short, med, long, number |
 | lim | Limit | integer |
 | off | Offset | integer |
 | top | Top N | integer |
 | bot | Bottom N | integer |
-| fmt | Format | json, md, csv, xml |
-| lng | Language | ISO 639-1 |
-| sty | Style | pro, casual, code |
-| ton | Tone | urgent, neutral |
-| len | Length | short, med, long |
-| col | Columns | comma_separated |
-| row | Rows | index_array |
-| srt | Sort | field_name |
-| grp | Group by | field_name |
-| typ | Type | str, int, bool |
+| srt | Sort by | field name |
+| grp | Group by | field name |
+| whr | Filter condition | condition string |
+| mch | Match pattern | glob (default) or regex with typ=regex |
+| exc | Exclude pattern | glob or regex |
+| dep | Depth | integer |
+| rng | Range | start:end |
+| typ | Type expectation | str, int, bool, regex |
 | enc | Encoding | utf8, base64, hex |
-| chr | Charset | utf-8, ascii |
 | cap | Capacity | bytes, tokens |
+| pri | Priority | p0, p1, p2 |
+| col | Columns | comma separated |
+| row | Rows | index array |
+| frm | From (time) | timestamp |
+| to | To (time) | timestamp |
+| scp | Scope | global, local, strict |
+| op | Operation ref | verb name (for BATC) |
 
 ---
 
-## Entities (14)
+## Entities
+
+### Core
 
 | Entity | Meaning |
 |--------|---------|
-| @R2 | Cloudflare R2 Storage |
-| @COS | Cloud Object Storage |
-| @GH | GitHub |
-| @DRIVE | Google Drive |
-| @LOCAL | Local filesystem |
-| @WORKER | Cloudflare Worker |
-| @CF | Cloudflare API |
-| @SCREEN | UI output |
-| @LOG | System log |
-| @NULL | Discard |
-| @STDIN | Standard input |
 | @SRC | Source payload |
 | @DST | Destination |
 | @PREV | Previous pipe output |
+| @LOCAL | Local filesystem |
+| @SCREEN | User-visible output |
+| @LOG | System log |
+| @NULL | Discard sink |
+| @STDIN | Standard input |
+
+### External
+
+| Entity | Meaning |
+|--------|---------|
+| @GH | GitHub |
+| @R2 | Cloudflare R2 Storage |
+| @COS | Cloud Object Storage |
+| @DRIVE | Google Drive |
+| @WORKER | Cloudflare Worker |
+| @CF | Cloudflare API |
 
 ---
 
 ## Quick Reference
 
-| Natural Language | I-Lang | Saved |
-|------------------|--------|-------|
-| Read config from GitHub, format as JSON | `[READ:@GH|path=config.json]=>[FMT|fmt=json]` | 55% |
-| Summarize previous in 3 bullets | `[Σ:@PREV|sty=bullets,len=3]` | 52% |
-| Translate doc to Chinese, save to R2 | `[θ:@SRC|lng=zh]=>[WRIT:@R2]` | 60% |
-| Read all .md files, merge, output | `[LIST:@LOCAL|mch="*.md"]=>[Π:READ]=>[Σ]=>[Ω]` | 65% |
-| Filter logs for fatal errors | `[φ:@LOG|whr="lvl=fatal"]` | 55% |
-| Draft professional email | `[DRFT:@SRC|ton=pro,fmt=email]` | 48% |
+| Natural Language | I-Lang |
+|------------------|--------|
+| Read config from GitHub, format as JSON | `[READ:@GH|path=config.json]=>[FMT|fmt=json]` |
+| Summarize previous in 3 bullets | `[Σ:@PREV|sty=bullets,len=3]` |
+| Translate to Chinese, save to R2 | `[θ:@SRC|lng=zh]=>[WRIT:@R2]` |
+| Read all .md, merge, output | `[LIST:@LOCAL|mch=*.md]=>[Π:READ]=>[Σ]=>[Ω]` |
+| Filter fatal errors from logs | `[φ:@LOG|whr=lvl:fatal]` |
+| Draft professional email | `[DRFT:@SRC|ton=pro,fmt=email]` |
 
 ---
 
@@ -213,12 +277,19 @@ Each step receives the previous output as `@PREV`.
 | Code | Meaning |
 |------|---------|
 | E200 | Entity Not Found |
+| E201 | Unsupported Entity |
 | E300 | Syntax Error |
 | E301 | Type Mismatch |
+| E302 | Invalid Modifier |
+| E303 | Invalid Value |
+| E304 | Unknown Verb |
+| E305 | Unknown Alias |
 | E400 | Rate Limited |
-| E401 | Token Capacity Exceeded |
+| E401 | Capacity Exceeded |
+| E402 | Timeout |
 | E500 | Dependency Unavailable |
 | E501 | Ambiguous Instruction |
+| E502 | Unsupported Format |
 
 ---
 
@@ -227,17 +298,14 @@ Each step receives the previous output as `@PREV`.
 | Resource | Link |
 |----------|------|
 | Protocol Spec | [ilang-ai/ilang-spec](https://github.com/ilang-ai/ilang-spec) |
-| Live Demo | [huggingface.co/spaces/i-Lang/ilang](https://huggingface.co/spaces/i-Lang/ilang) |
-| Training Corpus | [huggingface.co/datasets/i-Lang/ilang-instruction-corpus](https://huggingface.co/datasets/i-Lang/ilang-instruction-corpus) |
-| All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
 | Website | [ilang.ai](https://ilang.ai) |
+| All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
 | Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) |
 | Book (Specification) | [Amazon](https://www.amazon.com/dp/B0F5FV64Q2) |
 | Academic Paper | [ResearchGate](https://www.researchgate.net/publication/389513037) |
 
 ---
 
-I-Lang v2.0 | Max (@SUN) designed, Claude Opus (@OPUS) co-authored, Gemini (@GEMINI) reviewed.
-Protocol security: Cognitive Identity Authentication
-
-静水流深 | Palm Media Technology | ilang:genesis:2026-03-04
+I-Lang v3.0 Final | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
+Eastsoft Inc. | Palm Media Technology | MIT License
+ilang.ai | github.com/ilang-ai
