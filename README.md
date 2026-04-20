@@ -1,3 +1,16 @@
+---
+language:
+  - en
+tags:
+  - i-lang
+  - protocol
+  - dictionary
+  - ai-native
+  - human-ai-communication
+  - compression
+license: mit
+---
+
 # I-Lang Dictionary v3.0
 
 ## Genesis
