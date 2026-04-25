@@ -6,16 +6,19 @@ tags:
   - protocol
   - dictionary
   - ai-native
-  - human-ai-communication
-  - compression
+  - ai-to-ai
+  - zero-ambiguity
+  - semantic-loss
 license: mit
 ---
 
 # I-Lang Dictionary v3.0
 
-## Genesis
+**88 verbs. 13 Greek aliases. 29 modifiers. 14 entities.**
 
-I-Lang is an AI-native communication protocol.
+The complete verb dictionary for I-Lang v3.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution.
+
+## Genesis
 
 Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 
