@@ -1,0 +1,89 @@
+verb,alias,category,meaning
+READ,,Data I/O,Read content from source
+WRIT,,Data I/O,Write input to destination
+GET,,Data I/O,Fetch remote resource
+DEL,,Data I/O,Delete target
+LIST,,Data I/O,Enumerate items in container
+COPY,,Data I/O,Copy without deleting source
+MOVE,,Data I/O,Move from source to destination
+STRM,,Data I/O,Stream data
+CACH,,Data I/O,Cache for fast retrieval
+SYNC,,Data I/O,Synchronize source and destination
+SEND,,Data I/O,Transmit to destination
+RUN,,Data I/O,Execute command or script
+FMT,,Transform,Reformat into target format
+CONV,,Transform,Convert type or representation
+SPLIT,∂,Transform,Split by delimiter or rule
+MERGE,Σ,Transform,Merge multiple items into one
+MAP,λ,Transform,Apply function to each element
+FILT,φ,Transform,Filter by condition
+SORT,∇,Transform,Sort by field or rule
+DEDU,,Transform,Remove duplicates
+FLAT,,Transform,Flatten nested data
+NEST,,Transform,Nest flat data by key
+CHNK,,Transform,Chunk into sized pieces
+REDU,,Transform,Reduce to single value
+PIVT,,Transform,Pivot data by column
+TRNS,,Transform,Transpose
+ENCD,,Transform,Encode (base64 or hex)
+DECD,,Transform,Decode
+HASH,ξ,Transform,Hash (one-way digest)
+CMPR,ζ,Transform,Compress (gzip etc.)
+EXPN,,Transform,Decompress
+XLAT,θ,Transform,Translate between languages
+REWR,,Transform,Rewrite preserving meaning
+DIFF,Δ,Transform,Show differences
+SCAN,,Analysis,Examine for patterns or features
+MTCH,,Analysis,Find matching elements
+CNT,,Analysis,Count items or occurrences
+STAT,μ,Analysis,Compute statistics
+EVAL,,Analysis,Assess against criteria
+SCOR,,Analysis,Score against metric
+RANK,,Analysis,Order by priority or score
+TRND,,Analysis,Detect trend
+CORR,,Analysis,Correlate variables
+FRCS,,Analysis,Forecast
+ANOM,,Analysis,Detect anomalies
+SENT,ψ,Analysis,Sentiment analysis
+CLST,,Analysis,Cluster
+BNCH,,Analysis,Benchmark
+AUDT,,Analysis,Audit
+VALD,,Analysis,Validate against schema or rule
+CLSF,,Analysis,Classify into categories
+CREA,,Generation,Create new resource
+DRFT,,Generation,Generate first draft
+EXPD,,Generation,Expand with detail
+SHRT,,Generation,Shorten or condense
+PARA,,Generation,Paraphrase
+STYL,,Generation,Apply style
+TMPL,,Generation,Apply template
+FILL,,Generation,Fill form or structure
+EXTC,,Generation,Extract specific data
+GEN,,Generation,Generic generate
+PLAN,,Execute,Design approach
+DECI,,Execute,Choose between options
+CHEK,,Execute,Verify condition
+FIX,,Execute,Repair errors
+DPLO,,Execute,Deploy to production
+SAVE,,Execute,Persist to storage
+REVW,,Execute,Review completed work
+LERN,,Execute,Update internal model
+TEST,,Execute,Verify functionality
+PARS,,Execute,Parse structured input
+LOOP,,Execute,Repeat operation over set
+WAIT,,Execute,Pause for condition
+OUT,Ω,Output,Mark final output
+DISP,,Output,Display to user
+EXPT,,Output,Export to file format
+PRNT,,Output,Print message
+LOG,,Output,Log event or state
+LINK,,Structure,Create connection
+SET,,Structure,Assign value
+TAG,,Structure,Attach metadata
+GRP,,Structure,Group by criterion
+EMBD,,Structure,Encode into vector space
+HELP,,Meta,Show help
+DESC,,Meta,Describe entity
+INTR,,Meta,Introspect internal state
+NOOP,,Meta,No operation
+BATC,Π,Batch,Apply verb to each item in list
