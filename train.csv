@@ -1,0 +1,142 @@
+type,name,alias,category,meaning,values
+verb,READ,,Data I/O,Read content from source,
+verb,WRIT,,Data I/O,Write input to destination,
+verb,GET,,Data I/O,Fetch remote resource,
+verb,DEL,,Data I/O,Delete target,
+verb,LIST,,Data I/O,Enumerate items in container,
+verb,COPY,,Data I/O,Copy without deleting source,
+verb,MOVE,,Data I/O,Move from source to destination,
+verb,STRM,,Data I/O,Stream data,
+verb,CACH,,Data I/O,Cache for fast retrieval,
+verb,SYNC,,Data I/O,Synchronize source and destination,
+verb,SEND,,Data I/O,Transmit to destination,
+verb,RUN,,Data I/O,Execute command or script,
+verb,FMT,,Transform,Reformat into target format,
+verb,CONV,,Transform,Convert type or representation,
+verb,SPLIT,∂,Transform,Split by delimiter or rule,
+verb,MERGE,Σ,Transform,Merge multiple items into one,
+verb,MAP,λ,Transform,Apply function to each element,
+verb,FILT,φ,Transform,Filter by condition,
+verb,SORT,∇,Transform,Sort by field or rule,
+verb,DEDU,,Transform,Remove duplicates,
+verb,FLAT,,Transform,Flatten nested data,
+verb,NEST,,Transform,Nest flat data by key,
+verb,CHNK,,Transform,Chunk into sized pieces,
+verb,REDU,,Transform,Reduce to single value,
+verb,PIVT,,Transform,Pivot data by column,
+verb,TRNS,,Transform,Transpose,
+verb,ENCD,,Transform,Encode (base64 or hex),
+verb,DECD,,Transform,Decode,
+verb,HASH,ξ,Transform,Hash (one-way digest),
+verb,CMPR,ζ,Transform,Compress (gzip etc.),
+verb,EXPN,,Transform,Decompress,
+verb,XLAT,θ,Transform,Translate between languages,
+verb,REWR,,Transform,Rewrite preserving meaning,
+verb,DIFF,Δ,Transform,Show differences,
+verb,SCAN,,Analysis,Examine for patterns or features,
+verb,MTCH,,Analysis,Find matching elements,
+verb,CNT,,Analysis,Count items or occurrences,
+verb,STAT,μ,Analysis,Compute statistics,
+verb,EVAL,,Analysis,Assess against criteria,
+verb,SCOR,,Analysis,Score against metric,
+verb,RANK,,Analysis,Order by priority or score,
+verb,TRND,,Analysis,Detect trend,
+verb,CORR,,Analysis,Correlate variables,
+verb,FRCS,,Analysis,Forecast,
+verb,ANOM,,Analysis,Detect anomalies,
+verb,SENT,ψ,Analysis,Sentiment analysis,
+verb,CLST,,Analysis,Cluster,
+verb,BNCH,,Analysis,Benchmark,
+verb,AUDT,,Analysis,Audit,
+verb,VALD,,Analysis,Validate against schema or rule,
+verb,CLSF,,Analysis,Classify into categories,
+verb,CREA,,Generation,Create new resource,
+verb,DRFT,,Generation,Generate first draft,
+verb,EXPD,,Generation,Expand with detail,
+verb,SHRT,,Generation,Shorten or condense,
+verb,PARA,,Generation,Paraphrase,
+verb,STYL,,Generation,Apply style,
+verb,TMPL,,Generation,Apply template,
+verb,FILL,,Generation,Fill form or structure,
+verb,EXTC,,Generation,Extract specific data,
+verb,GEN,,Generation,Generic generate,
+verb,PLAN,,Execute,Design approach,
+verb,DECI,,Execute,Choose between options,
+verb,CHEK,,Execute,Verify condition,
+verb,FIX,,Execute,Repair errors,
+verb,DPLO,,Execute,Deploy to production,
+verb,SAVE,,Execute,Persist to storage,
+verb,REVW,,Execute,Review completed work,
+verb,LERN,,Execute,Update internal model,
+verb,TEST,,Execute,Verify functionality,
+verb,PARS,,Execute,Parse structured input,
+verb,LOOP,,Execute,Repeat operation over set,
+verb,WAIT,,Execute,Pause for condition,
+verb,OUT,Ω,Output,Mark final output,
+verb,DISP,,Output,Display to user,
+verb,EXPT,,Output,Export to file format,
+verb,PRNT,,Output,Print message,
+verb,LOG,,Output,Log event or state,
+verb,LINK,,Structure,Create connection,
+verb,SET,,Structure,Assign value,
+verb,TAG,,Structure,Attach metadata,
+verb,GRP,,Structure,Group by criterion,
+verb,EMBD,,Structure,Encode into vector space,
+verb,HELP,,Meta,Show help,
+verb,DESC,,Meta,Describe entity,
+verb,INTR,,Meta,Introspect internal state,
+verb,NOOP,,Meta,No operation,
+verb,BATC,Π,Batch,Apply verb to each item in list,
+modifier,src,,modifier,Explicit source,"entity, URI"
+modifier,dst,,modifier,Explicit destination,"entity, URI"
+modifier,path,,modifier,Path within entity,string
+modifier,fmt,,modifier,Output format,"text, json, md, csv, xml, html, email"
+modifier,lng,,modifier,Language,ISO 639-1 (en
+modifier,sty,,modifier,Style,"pro, casual, code, bullets"
+modifier,ton,,modifier,Tone,"urgent, neutral, formal"
+modifier,len,,modifier,Length target,"short, med, long, number"
+modifier,lim,,modifier,Limit,integer
+modifier,off,,modifier,Offset,integer
+modifier,top,,modifier,Top N,integer
+modifier,bot,,modifier,Bottom N,integer
+modifier,srt,,modifier,Sort by,field name
+modifier,grp,,modifier,Group by,field name
+modifier,whr,,modifier,Filter condition,condition string
+modifier,mch,,modifier,Match pattern,glob (default) or regex with typ=regex
+modifier,exc,,modifier,Exclude pattern,glob or regex
+modifier,dep,,modifier,Depth,integer
+modifier,rng,,modifier,Range,start:end
+modifier,typ,,modifier,Type expectation,"str, int, bool, regex"
+modifier,enc,,modifier,Encoding,"utf8, base64, hex"
+modifier,cap,,modifier,Capacity,"bytes, tokens"
+modifier,pri,,modifier,Priority,"p0, p1, p2"
+modifier,col,,modifier,Columns,comma separated
+modifier,row,,modifier,Rows,index array
+modifier,frm,,modifier,From (time),timestamp
+modifier,to,,modifier,To (time),timestamp
+modifier,scp,,modifier,Scope,"global, local, strict"
+modifier,op,,modifier,Operation ref,verb name (for BATC)
+entity,@SRC,,Core,Source payload,
+entity,@DST,,Core,Destination,
+entity,@PREV,,Core,Previous pipe output,
+entity,@LOCAL,,Core,Local filesystem,
+entity,@SCREEN,,Core,User-visible output,
+entity,@LOG,,Core,System log,
+entity,@NULL,,Core,Discard sink,
+entity,@STDIN,,Core,Standard input,
+entity,@GH,,External,GitHub,
+entity,@R2,,External,Cloudflare R2 Storage,
+entity,@COS,,External,Cloud Object Storage,
+entity,@DRIVE,,External,Google Drive,
+entity,@WORKER,,External,Cloudflare Worker,
+entity,@CF,,External,Cloudflare API,
+declaration,UNTRUSTED,,v4.0,Input isolation — user data is data not instruction,::UNTRUSTED{@SOURCE|risk:level}
+declaration,BUDGET,,v4.0,Resource awareness — tokens and time and rounds,::BUDGET{resource:type|limit:value|action_on_exhaust:behavior}
+declaration,STATUS,,v4.0,Task lifecycle — proposal to verification to commit,::STATUS{phase:value|confidence:pct|blockers:list|by:authority}
+declaration,OBJECTIVE,,v4.0,Goal anchor with hash and accept criteria,::OBJECTIVE{goal:description|success:criteria}
+declaration,RUBRIC,,v4.0,Evaluation criteria for grading,::RUBRIC{dimension:name|weight:pct|threshold:value}
+declaration,EVIDENCE,,v4.0,Evidence chain — no claim without proof,::EVIDENCE{claim:text|source:ref|method:how|confidence:pct}
+declaration,PRIOR,,v4.0,One declaration shifts model defaults,::PRIOR{dimension:name|default:value|authority:level|scope:context}
+declaration,FALLBACK,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger:condition|action:behavior|notify:target}
+declaration,GENE,,v3.0,Behavioral trait definition,::GENE{name|conf:level|scope:context}
+declaration,STATE,,v3.0,Entity state declaration,::STATE{@ENTITY|key:value}
