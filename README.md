@@ -12,17 +12,17 @@ tags:
 license: mit
 ---
 
-# I-Lang Dictionary v3.0
+# I-Lang Dictionary v4.0
 
 **88 verbs. 13 Greek aliases. 29 modifiers. 14 entities.**
 
-The complete verb dictionary for I-Lang v3.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution.
+The complete verb dictionary for I-Lang v4.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution.
 
 ## Genesis
 
 Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 
-Eastsoft Inc. | Palm Media Technology | ilang:v3.0:2026-04-20
+Eastsoft Inc. | Palm Media Technology | ilang:v4.0:2026-04-20
 
 ---
 
@@ -49,6 +49,19 @@ Each step receives the previous output as `@PREV`.
 ::GENE{name|conf:level|scope:context}
   T:trait_description
   A:anti_pattern⇒consequence
+```
+
+### v4.0 Execution Declarations (8)
+
+```
+::PRIOR{dimension:name|default:value|authority:level|scope:context}
+::UNTRUSTED{@SOURCE|risk:level}
+::BUDGET{resource:type|limit:value|action_on_exhaust:behavior}
+::STATUS{phase:value|confidence:pct|blockers:list|by:authority}
+::OBJECTIVE{goal:description|success:criteria}
+::RUBRIC{dimension:name|weight:pct|threshold:value}
+::EVIDENCE{claim:text|source:ref|method:how|confidence:pct}
+::FALLBACK{trigger:condition|action:behavior|notify:target}
 ```
 
 ### Conventions
@@ -322,6 +335,6 @@ Each step receives the previous output as `@PREV`.
 
 ---
 
-I-Lang v3.0 Final | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
+I-Lang v4.0 Final | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 Eastsoft Inc. | Palm Media Technology | MIT License
 ilang.ai | github.com/ilang-ai
