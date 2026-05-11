@@ -10,23 +10,6 @@ tags:
   - zero-ambiguity
   - semantic-loss
 license: mit
-configs:
-  - config_name: verbs
-    data_files:
-      - split: train
-        path: data/verbs.csv
-  - config_name: modifiers
-    data_files:
-      - split: train
-        path: data/modifiers.csv
-  - config_name: entities
-    data_files:
-      - split: train
-        path: data/entities.csv
-  - config_name: declarations
-    data_files:
-      - split: train
-        path: data/declarations.csv
 ---
 
 # I-Lang Dictionary v4.0
