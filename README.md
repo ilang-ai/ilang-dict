@@ -22,7 +22,7 @@ The complete verb dictionary for I-Lang v4.0, the native language of artificial 
 
 Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 
-Eastsoft Inc. | Palm Media Technology | ilang:v4.0:2026-04-20
+iLang Inc. | Palm Media Technology | ilang:v4.0:2026-04-20
 
 ---
 
@@ -336,5 +336,5 @@ Each step receives the previous output as `@PREV`.
 ---
 
 I-Lang v4.0 Final | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
-Eastsoft Inc. | Palm Media Technology | MIT License
+iLang Inc. | Palm Media Technology | MIT License
 ilang.ai | github.com/ilang-ai
