@@ -16,7 +16,7 @@ license: mit
 
 **88 verbs. 13 Greek aliases. 29 modifiers. 14 entities.**
 
-The complete verb dictionary for I-Lang v4.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution.
+The complete verb dictionary for I-Lang v4.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
 ## Genesis
 
