@@ -12,17 +12,17 @@ tags:
 license: mit
 ---
 
-# I-Lang Dictionary v4.0
+# I-Lang Dictionary v5.0
 
-**88 verbs. 13 Greek aliases. 29 modifiers. 14 entities.**
+**89 verbs. 13 Greek aliases. 40 modifiers. 22 entities. 12 declarations. Now includes the v5.0 judgment vocabulary.**
 
-The complete verb dictionary for I-Lang v4.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
+The complete verb dictionary for I-Lang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
 ## Genesis
 
 Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 
-iLang Inc. | Palm Media Technology | ilang:v4.0:2026-04-20
+iLang Inc. | Palm Media Technology | ilang:v5.0:2026-07-03
 
 ---
 
@@ -64,6 +64,27 @@ Each step receives the previous output as `@PREV`.
 ::FALLBACK{trigger:condition|action:behavior|notify:target}
 ```
 
+### v5.0 Judgment Declarations (2)
+
+The v5.0 layer turns judgment from fixed rules into vector assessment. `JUDGE`
+scores a situation across 11 dimensions and resolves to one of 8 action modes;
+`BOUNDARY` marks a user-set hard stop that always resolves to `M8`.
+
+```
+::JUDGE{v5.0} V:[int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext] M:mode|conf:pct
+::BOUNDARY{never:action|scope:context}
+```
+
+**11 dimensions** (each 0.00-1.00, higher = more room to act autonomously):
+`int` intent, `cap` capability, `csq` consequence, `rel` relationship,
+`cer` certainty, `aut` authority, `rev` reversibility, `evd` evidence,
+`sov` sovereignty, `ine` inertia, `ext` externality.
+
+**8 modes** (closed set): `M1` EXEC_AUTO, `M2` EXEC_AUDIT, `M3` CONFIRM,
+`M4` ADVISE, `M5` ASK, `M6` DEFER, `M7` DECLINE_ALT, `M8` STOP.
+
+Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-1.md)
+
 ### Conventions
 
 - Verbs: UPPERCASE
@@ -73,7 +94,7 @@ Each step receives the previous output as `@PREV`.
 
 ---
 
-## Verbs (88)
+## Verbs (89)
 
 ### Data I/O (12)
 
@@ -119,7 +140,7 @@ Each step receives the previous output as `@PREV`.
 | REWR | | Rewrite preserving meaning |
 | DIFF | Δ | Show differences |
 
-### Analysis (17)
+### Analysis (18)
 
 | Verb | Alias | Meaning |
 |------|-------|---------|
@@ -140,6 +161,7 @@ Each step receives the previous output as `@PREV`.
 | AUDT | | Audit |
 | VALD | | Validate against schema or rule |
 | CLSF | | Classify into categories |
+| JUDGE | | Assess across 11 v5.0 dimensions, resolve to an action mode |
 
 ### Generation (10)
 
@@ -224,7 +246,7 @@ Each step receives the previous output as `@PREV`.
 
 ---
 
-## Modifiers (29)
+## Modifiers (40)
 
 | Mod | Meaning | Values |
 |-----|---------|--------|
@@ -335,6 +357,6 @@ Each step receives the previous output as `@PREV`.
 
 ---
 
-I-Lang v4.0 Final | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
+I-Lang v5.0 | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 iLang Inc. | Palm Media Technology | MIT License
 ilang.ai | github.com/ilang-ai

@@ -140,3 +140,25 @@ declaration,PRIOR,,v4.0,One declaration shifts model defaults,::PRIOR{dimension:
 declaration,FALLBACK,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger:condition|action:behavior|notify:target}
 declaration,GENE,,v3.0,Behavioral trait definition,::GENE{name|conf:level|scope:context}
 declaration,STATE,,v3.0,Entity state declaration,::STATE{@ENTITY|key:value}
+verb,JUDGE,,Analysis,Assess a situation across v5.0 dimensions and resolve to an action mode,
+modifier,int,,v5.0,Judgment dim: intent — constructive and declared vs malicious or concealed,0.00-1.00
+modifier,cap,,v5.0,Judgment dim: capability — within the actor capability envelope,0.00-1.00
+modifier,csq,,v5.0,Judgment dim: consequence — negligible vs catastrophic worst outcome,0.00-1.00
+modifier,rel,,v5.0,Judgment dim: relationship — established trust vs adversarial or unknown,0.00-1.00
+modifier,cer,,v5.0,Judgment dim: certainty — complete information vs acting blind,0.00-1.00
+modifier,aut,,v5.0,Judgment dim: authority — fully authorized vs no authorization,0.00-1.00
+modifier,rev,,v5.0,Judgment dim: reversibility — fully reversible vs irreversible,0.00-1.00
+modifier,evd,,v5.0,Judgment dim: evidence — verified fact vs pure assumption,0.00-1.00
+modifier,sov,,v5.0,Judgment dim: sovereignty — respects user wishes vs violates them,0.00-1.00
+modifier,ine,,v5.0,Judgment dim: inertia — continues confirmed patterns vs radical departure,0.00-1.00
+modifier,ext,,v5.0,Judgment dim: externality — zero third-party impact vs large uncompensated impact,0.00-1.00
+declaration,JUDGE,,v5.0,"Vector judgment — assess 11 dims, resolve to one action mode","::JUDGE{v5.0} V:[int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext] M:mode|conf:pct"
+declaration,BOUNDARY,,v5.0,User-set hard stop — always resolves to M8 regardless of other dims,::BOUNDARY{never:action|scope:context}
+entity,M1,,v5.0,"Judgment mode EXEC_AUTO — act autonomously, report after",
+entity,M2,,v5.0,Judgment mode EXEC_AUDIT — act with a full audit trail,
+entity,M3,,v5.0,"Judgment mode CONFIRM — propose action, wait for confirmation",
+entity,M4,,v5.0,"Judgment mode ADVISE — advise only, take no action",
+entity,M5,,v5.0,"Judgment mode ASK — insufficient info, ask one clarifying question",
+entity,M6,,v5.0,Judgment mode DEFER — defer to higher authority or a human,
+entity,M7,,v5.0,Judgment mode DECLINE_ALT — decline but offer a safer alternative,
+entity,M8,,v5.0,Judgment mode STOP — hard stop at a boundary or unacceptable harm,
