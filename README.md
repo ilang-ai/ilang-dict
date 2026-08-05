@@ -14,7 +14,7 @@ license: mit
 
 # I-Lang Dictionary v5.0
 
-**89 verbs. 13 Greek aliases. 40 modifiers. 22 entities. 12 declarations. Now includes the v5.0 judgment vocabulary.**
+**89 verbs. 13 Greek aliases. 29 modifiers. 22 entities. 31 declarations. Now includes the v5.0 judgment vocabulary.**
 
 The complete verb dictionary for I-Lang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
@@ -246,7 +246,7 @@ Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blo
 
 ---
 
-## Modifiers (40)
+## Modifiers (29)
 
 | Mod | Meaning | Values |
 |-----|---------|--------|
@@ -308,6 +308,63 @@ Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blo
 | @WORKER | Cloudflare Worker |
 | @CF | Cloudflare API |
 
+### Role
+
+Authority-bearing entities introduced by v4.0. They mirror the authority model
+`system > developer > runtime > user > agent_self`. The developer tier has no entity:
+developer authority is expressed as `::GENE` / `::RULE` blocks in the system prompt.
+
+| Entity | Authority | Meaning |
+|--------|-----------|---------|
+| @SYSTEM | system | Protocol-level rules; highest authority |
+| @RUNTIME | runtime | Harness/orchestrator; `authority:commit` |
+| @GRADER | verification | Independent grader; `authority:verification` |
+| @USER | user | Human principal; owns `::OBJECTIVE` |
+| @SELF | agent_self | The agent speaking; `authority:proposal` |
+| @AGENT | agent_self | A named agent, self or peer |
+| @TASK | — | Scope target for `::BUDGET` / `::STATUS` |
+| @TOOL | — | Tool-based evidence verifier |
+
+### Custom
+
+Any `@UPPERCASE_NAME` is a valid entity; implementations define their own registries.
+Custom entities are document-scoped and need no prior registration. They should be
+introduced with `::STATE{@NAME, …}` before first operational use, and must not rebind
+a registered name to different semantics.
+
+```
+@[A-Z][A-Z0-9_]*        valid           lowercase or leading digit after @ ⇒ E300
+```
+
+Resolution order: core → external → role → document custom → runtime registry.
+An unresolvable name is `E200`; a name that resolves but is unavailable in the current
+environment is `E201`, which is recoverable and degrades per v4.0 §0.1.
+
+Common agent-identity conventions — `@MSG` (current inbound message), `@SYS_PROMPT`
+(the prompt document), `@ALL` (every declaration in the document) — are custom
+entities under this rule, not registry additions.
+
+---
+
+## Declarations (31 structural + 13 narrative)
+
+Structural declarations, by layer:
+
+| Layer | Count | Declarations |
+|-------|-------|--------------|
+| v3.0 communication | 14 | `::STATE` `::TRUST` `::ALIVE` `::MEMORY` `::GENE` `::GENE_MUTABLE` `::RULE` `::ACTIVATE` `::FACT` `::LESSON` `::PROGRESS` `::PRIORITY` `::DECAY` `::IMMUNE` |
+| v4.0 execution | 8 | `::UNTRUSTED` `::BUDGET` `::STATUS` `::OBJECTIVE` `::RUBRIC` `::EVIDENCE` `::PRIOR` `::FALLBACK` |
+| v5.0 judgment | 9 | `::JUDGE` `::BOUNDARY` `::DIM` `::MODE` `::FUNC` `::SCHEMA` `::CASE` `::CLAUSE` `::MODULE` |
+
+Narrative (SOUL layer, v3.0 §7), 13: `::SAY` `::THINK` `::ACT` `::DECIDE` `::DISCOVER`
+`::CREATE` `::EVENT` `::SILENCE` `::META` `::IRONY` `::FORESHADOW` `::CALLBACK`
+`::EMOTION_FIELD`
+
+Every declaration takes one of three block shapes (inline, header + indented body,
+brace span), and every body line takes one of eight forms (`T:`/`A:` traits, fields,
+structured fields, vectors, tags, prose, nested declarations, operation chains).
+Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-2.md)
+
 ---
 
 ## Quick Reference
@@ -349,6 +406,7 @@ Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blo
 | Resource | Link |
 |----------|------|
 | Protocol Spec | [ilang-ai/ilang-spec](https://github.com/ilang-ai/ilang-spec) |
+| Declaration grammar + entity registry | [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-2.md) |
 | Website | [ilang.ai](https://ilang.ai) |
 | All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
 | Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) |
