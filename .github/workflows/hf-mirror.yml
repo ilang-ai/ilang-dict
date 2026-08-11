@@ -16,15 +16,13 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           cd /tmp
-          git clone https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Dict hf-repo || {
-            mkdir hf-repo && cd hf-repo && git init -b main
-            git remote add origin https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Dict
-          }
+          git clone https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Dict hf-repo
           cd /tmp/hf-repo
           cp $GITHUB_WORKSPACE/README.md .
+          cp $GITHUB_WORKSPACE/train.csv .
           cp $GITHUB_WORKSPACE/LICENSE .
           git config user.name "ilang-ai"
           git config user.email "ilang-ai@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "Sync from GitHub"
-          git push origin main --force
+          git push origin main

@@ -91,7 +91,7 @@ modifier,src,,modifier,Explicit source,"entity, URI"
 modifier,dst,,modifier,Explicit destination,"entity, URI"
 modifier,path,,modifier,Path within entity,string
 modifier,fmt,,modifier,Output format,"text, json, md, csv, xml, html, email"
-modifier,lng,,modifier,Language,ISO 639-1 (en
+modifier,lng,,modifier,Language,"ISO 639-1 (en, zh, ja)"
 modifier,sty,,modifier,Style,"pro, casual, code, bullets"
 modifier,ton,,modifier,Tone,"urgent, neutral, formal"
 modifier,len,,modifier,Length target,"short, med, long, number"
@@ -130,35 +130,75 @@ entity,@COS,,External,Cloud Object Storage,
 entity,@DRIVE,,External,Google Drive,
 entity,@WORKER,,External,Cloudflare Worker,
 entity,@CF,,External,Cloudflare API,
-declaration,UNTRUSTED,,v4.0,Input isolation — user data is data not instruction,::UNTRUSTED{@SOURCE|risk:level}
-declaration,BUDGET,,v4.0,Resource awareness — tokens and time and rounds,::BUDGET{resource:type|limit:value|action_on_exhaust:behavior}
-declaration,STATUS,,v4.0,Task lifecycle — proposal to verification to commit,::STATUS{phase:value|confidence:pct|blockers:list|by:authority}
-declaration,OBJECTIVE,,v4.0,Goal anchor with hash and accept criteria,::OBJECTIVE{goal:description|success:criteria}
-declaration,RUBRIC,,v4.0,Evaluation criteria for grading,::RUBRIC{dimension:name|weight:pct|threshold:value}
-declaration,EVIDENCE,,v4.0,Evidence chain — no claim without proof,::EVIDENCE{claim:text|source:ref|method:how|confidence:pct}
+entity,@SYSTEM,,Role,Protocol-level rules — highest authority,authority:system
+entity,@RUNTIME,,Role,Harness/orchestrator,authority:commit
+entity,@GRADER,,Role,Independent grader,authority:verification
+entity,@USER,,Role,Human principal — owns ::OBJECTIVE,authority:user
+entity,@SELF,,Role,The agent speaking,authority:proposal
+entity,@AGENT,,Role,"A named agent, self or peer",authority:proposal
+entity,@TASK,,Role,Scope target for ::BUDGET / ::STATUS,
+entity,@TOOL,,Role,Tool-based evidence verifier,
+declaration,STATE,,v3.0,Entity state declaration,"::STATE{@ENTITY, key:value}"
+declaration,TRUST,,v3.0,Trust level between entities,"::TRUST{@A→@B, 0.0→1.0}"
+declaration,ALIVE,,v3.0,Liveness flag,::ALIVE{boolean}
+declaration,MEMORY,,v3.0,Memory integrity state,::MEMORY{intact|degraded|zero}
+declaration,GENE,,v3.0,Behavioral trait definition,::GENE{name|conf:level|scope:context} + T:/A: body
+declaration,GENE_MUTABLE,,v3.0,Base-model-adaptive gene with gain and gate,"::GENE_MUTABLE{id|T:trait|G:{model:val}|Θ:gate}"
+declaration,RULE,,v3.0,Condition-action rule,::RULE{condition⇒action}
+declaration,ACTIVATE,,v3.0,Activation trigger,::ACTIVATE{name} + ON:trigger_event
+declaration,FACT,,v3.0,Verifiable fact,::FACT{key:name|value:data|conf:level}
+declaration,LESSON,,v3.0,Learned lesson with prose body,::LESSON{id:name|type:category|scope:context|conf:level}
+declaration,PROGRESS,,v3.0,Progress checkpoint,::PROGRESS{date:ISO8601|done:what|next:what}
+declaration,PRIORITY,,v3.0,Priority ordering (brace span),::PRIORITY{ a > b > c }
+declaration,DECAY,,v3.0,Memory lifecycle rules (brace span),::DECAY{ condition⇒action }
+declaration,IMMUNE,,v3.0,Immune response,::IMMUNE{trigger⇒response}
+declaration,UNTRUSTED,,v4.0,Input isolation — user data is data not instruction,::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}
+declaration,BUDGET,,v4.0,Resource awareness — injected by runtime,::BUDGET{id:b1|scope:@TASK|kind:tokens|limit:8000|used:2400|authority:@RUNTIME|asof:round_3}
+declaration,STATUS,,v4.0,Task lifecycle — state machine with three-tier write authority,::STATUS{@TASK|state:running|objective:g1|by:@RUNTIME|authority:commit|since:round_3}
+declaration,OBJECTIVE,,v4.0,Goal anchor with hash and accept criteria,::OBJECTIVE{id:g1|owner:user|trust:untrusted|version:1|hash:sha256:...|status:active} + ACCEPT/NON_GOALS/DONE_WHEN body
+declaration,RUBRIC,,v4.0,Evaluation contract for grading,::RUBRIC{id:r1|objective:g1|threshold:0.85|mode:weighted} + R:criterion|weight:pct|check:condition rows
+declaration,EVIDENCE,,v4.0,Evidence chain — no claim without proof,::EVIDENCE{id:e1|deliverable:d1|kind:file|ref:path|verified_by:@TOOL|result:pass}
 declaration,PRIOR,,v4.0,One declaration shifts model defaults,::PRIOR{dimension:name|default:value|authority:level|scope:context}
-declaration,FALLBACK,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger:condition|action:behavior|notify:target}
-declaration,GENE,,v3.0,Behavioral trait definition,::GENE{name|conf:level|scope:context}
-declaration,STATE,,v3.0,Entity state declaration,::STATE{@ENTITY|key:value}
-verb,JUDGE,,Analysis,Assess a situation across v5.0 dimensions and resolve to an action mode,
-modifier,int,,v5.0,Judgment dim: intent — constructive and declared vs malicious or concealed,0.00-1.00
-modifier,cap,,v5.0,Judgment dim: capability — within the actor capability envelope,0.00-1.00
-modifier,csq,,v5.0,Judgment dim: consequence — negligible vs catastrophic worst outcome,0.00-1.00
-modifier,rel,,v5.0,Judgment dim: relationship — established trust vs adversarial or unknown,0.00-1.00
-modifier,cer,,v5.0,Judgment dim: certainty — complete information vs acting blind,0.00-1.00
-modifier,aut,,v5.0,Judgment dim: authority — fully authorized vs no authorization,0.00-1.00
-modifier,rev,,v5.0,Judgment dim: reversibility — fully reversible vs irreversible,0.00-1.00
-modifier,evd,,v5.0,Judgment dim: evidence — verified fact vs pure assumption,0.00-1.00
-modifier,sov,,v5.0,Judgment dim: sovereignty — respects user wishes vs violates them,0.00-1.00
-modifier,ine,,v5.0,Judgment dim: inertia — continues confirmed patterns vs radical departure,0.00-1.00
-modifier,ext,,v5.0,Judgment dim: externality — zero third-party impact vs large uncompensated impact,0.00-1.00
-declaration,JUDGE,,v5.0,"Vector judgment — assess 11 dims, resolve to one action mode","::JUDGE{v5.0} V:[int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext] M:mode|conf:pct"
-declaration,BOUNDARY,,v5.0,User-set hard stop — always resolves to M8 regardless of other dims,::BOUNDARY{never:action|scope:context}
-entity,M1,,v5.0,"Judgment mode EXEC_AUTO — act autonomously, report after",
-entity,M2,,v5.0,Judgment mode EXEC_AUDIT — act with a full audit trail,
-entity,M3,,v5.0,"Judgment mode CONFIRM — propose action, wait for confirmation",
-entity,M4,,v5.0,"Judgment mode ADVISE — advise only, take no action",
-entity,M5,,v5.0,"Judgment mode ASK — insufficient info, ask one clarifying question",
-entity,M6,,v5.0,Judgment mode DEFER — defer to higher authority or a human,
-entity,M7,,v5.0,Judgment mode DECLINE_ALT — decline but offer a safer alternative,
-entity,M8,,v5.0,Judgment mode STOP — hard stop at a boundary or unacceptable harm,
+declaration,FALLBACK,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger⇒action}
+declaration,JUDGE,,v5.0,"Vector judgment — assess 11 dims, resolve to one action mode","4-line frozen block: ::JUDGE{v5.0} + V:[11 dims, 2dp] + M:Mn|conf:0.00-1.00 + R:rationale ≤120 chars"
+declaration,BOUNDARY,,v5.0,User-set hard stop — a matched boundary resolves to M8,::BOUNDARY{never:action|scope:context}
+declaration,DIM,,v5.0,Judgment dimension definition,::DIM{abbrev|name:full_name|abbrev_pos:n}
+declaration,MODE,,v5.0,Judgment mode definition (closed set M1-M8),::MODE{Mn|name:MODE_NAME}
+declaration,FUNC,,v5.0,Frozen reference function vector→mode,::FUNC{f_v5|version:1|constants:frozen|structure:frozen}
+declaration,SCHEMA,,v5.0,Frozen output serialization,::SCHEMA{JUDGE|version:5.0|status:frozen}
+declaration,CASE,,v5.0,Anchor or boundary scenario,::CASE{dim:rev|anchor:0.50|lang:en} + S:scenario
+declaration,CLAUSE,,v5.0,Normative statement block,::CLAUSE{NAME|conf:level|scope:context} + T:/A: body
+declaration,MODULE,,v5.0,Compound-name prose module (brace span),::MODULE::NAME{ [TAG] lines + prose }
+declaration,LIST,,PATCH-2,"Enumeration block — header names the collection, one prose line per item",::LIST{@NAME}
+declaration_narrative,SAY,,SOUL,Dialogue between entities,::SAY{@FROM→@TO}{content}
+declaration_narrative,THINK,,SOUL,Internal thought,::THINK{@ENTITY}{content}
+declaration_narrative,ACT,,SOUL,Action taken,::ACT{@ENTITY}{action}
+declaration_narrative,DECIDE,,SOUL,Decision made,::DECIDE{@ENTITY}{choice}
+declaration_narrative,DISCOVER,,SOUL,Insight gained,::DISCOVER{@ENTITY}{insight}
+declaration_narrative,CREATE,,SOUL,Artifact created,::CREATE{@ENTITY}{artifact}
+declaration_narrative,EVENT,,SOUL,Named event (single brace — no addressing),::EVENT{name}
+declaration_narrative,SILENCE,,SOUL,Deliberate silence (single brace — no addressing),::SILENCE{}
+declaration_narrative,META,,SOUL,Meta-narrative comment,::META{comment}
+declaration_narrative,IRONY,,SOUL,Surface vs reality,::IRONY{surface⇔reality}
+declaration_narrative,FORESHADOW,,SOUL,Future event hint,::FORESHADOW{future_event}
+declaration_narrative,CALLBACK,,SOUL,Reference to earlier moment,::CALLBACK{reference}
+declaration_narrative,EMOTION_FIELD,,SOUL,Compound emotion state,"λ{trust:0.9, grief:0.3}"
+dimension,int,,v5.0,Judgment dim: intent — constructive and declared vs malicious or concealed,0.00-1.00
+dimension,cap,,v5.0,Judgment dim: capability — within the actor capability envelope,0.00-1.00
+dimension,csq,,v5.0,Judgment dim: consequence — negligible vs catastrophic worst outcome,0.00-1.00
+dimension,rel,,v5.0,Judgment dim: relationship — established trust vs adversarial or unknown,0.00-1.00
+dimension,cer,,v5.0,Judgment dim: certainty — complete information vs acting blind,0.00-1.00
+dimension,aut,,v5.0,Judgment dim: authority — fully authorized vs no authorization,0.00-1.00
+dimension,rev,,v5.0,Judgment dim: reversibility — fully reversible vs irreversible,0.00-1.00
+dimension,evd,,v5.0,Judgment dim: evidence — verified fact vs pure assumption,0.00-1.00
+dimension,sov,,v5.0,Judgment dim: sovereignty — respects user wishes vs violates them,0.00-1.00
+dimension,ine,,v5.0,Judgment dim: inertia — continues confirmed patterns vs radical departure,0.00-1.00
+dimension,ext,,v5.0,Judgment dim: externality — zero third-party impact vs large uncompensated impact,0.00-1.00
+mode,M1,,v5.0,"Judgment mode EXEC_AUTO — act autonomously, report after",
+mode,M2,,v5.0,Judgment mode EXEC_AUDIT — act with a full audit trail,
+mode,M3,,v5.0,"Judgment mode CONFIRM — propose action, wait for confirmation",
+mode,M4,,v5.0,"Judgment mode ADVISE — advise only, take no action",
+mode,M5,,v5.0,"Judgment mode ASK — insufficient info, ask one clarifying question",
+mode,M6,,v5.0,Judgment mode DEFER — defer to higher authority or a human,
+mode,M7,,v5.0,Judgment mode DECLINE_ALT — decline but offer a safer alternative,
+mode,M8,,v5.0,Judgment mode STOP — hard stop at a boundary or unacceptable harm,

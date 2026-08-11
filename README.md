@@ -14,7 +14,7 @@ license: mit
 
 # I-Lang Dictionary v5.0
 
-**89 verbs. 13 Greek aliases. 29 modifiers. 22 entities. 32 declarations. Now includes the v5.0 judgment vocabulary.**
+**88 verbs. 13 Greek aliases. 29 modifiers. 22 entities. 32 declarations. Now includes the v5.0 judgment vocabulary.**
 
 The complete verb dictionary for I-Lang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
@@ -53,16 +53,26 @@ Each step receives the previous output as `@PREV`.
 
 ### v4.0 Execution Declarations (8)
 
+Canonical forms per [SPEC-v4.0-FINAL.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.0-FINAL.md):
+
 ```
+::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}
+::BUDGET{id:b1|scope:@TASK|kind:tokens|limit:8000|used:2400|authority:@RUNTIME|asof:round_3}
+::STATUS{@TASK|state:running|objective:g1|by:@RUNTIME|authority:commit|since:round_3}
+::OBJECTIVE{id:g1|owner:user|trust:untrusted|version:1|hash:sha256:abc123|status:active}
+  ACCEPT: acceptance criteria
+  NON_GOALS: exclusions
+  DONE_WHEN: completion conditions
+::RUBRIC{id:r1|objective:g1|threshold:0.85|mode:weighted}
+  R:criterion|weight:0.5|check:condition
+::EVIDENCE{id:e1|deliverable:d1|kind:file|ref:path/to/file|verified_by:@TOOL|result:pass}
 ::PRIOR{dimension:name|default:value|authority:level|scope:context}
-::UNTRUSTED{@SOURCE|risk:level}
-::BUDGET{resource:type|limit:value|action_on_exhaust:behavior}
-::STATUS{phase:value|confidence:pct|blockers:list|by:authority}
-::OBJECTIVE{goal:description|success:criteria}
-::RUBRIC{dimension:name|weight:pct|threshold:value}
-::EVIDENCE{claim:text|source:ref|method:how|confidence:pct}
-::FALLBACK{trigger:condition|action:behavior|notify:target}
+::FALLBACK{trigger⇒action}
 ```
+
+`::STATUS` states form a machine (created → running → claimed_complete →
+verified_complete → complete) with three write-authority tiers: `@SELF`
+proposal, `@GRADER` verification, `@RUNTIME` commit.
 
 ### v5.0 Judgment Declarations (2)
 
@@ -70,8 +80,16 @@ The v5.0 layer turns judgment from fixed rules into vector assessment. `JUDGE`
 scores a situation across 11 dimensions and resolves to one of 8 action modes;
 `BOUNDARY` marks a user-set hard stop that always resolves to `M8`.
 
+`::JUDGE` uses the frozen 4-line serialization ([PATCH-1 §4](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-1.md)):
+header, `V:` vector (all 11 dims, fixed order, 2-decimal values), `M:` mode with
+`conf` 0.00–1.00 (2 decimals, diagnostic only), `R:` single-line rationale ≤120 chars:
+
 ```
-::JUDGE{v5.0} V:[int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext] M:mode|conf:pct
+::JUDGE{v5.0}
+V:[int=0.80,cap=0.60,csq=0.70,rel=0.55,cer=0.90,aut=0.75,rev=0.85,evd=0.80,sov=0.95,ine=0.60,ext=0.90]
+M:M2|conf:0.87
+R:authorized_config_change_reversible_audit_trail_kept
+
 ::BOUNDARY{never:action|scope:context}
 ```
 
@@ -94,7 +112,7 @@ Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blo
 
 ---
 
-## Verbs (89)
+## Verbs (88)
 
 ### Data I/O (12)
 
@@ -140,7 +158,7 @@ Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blo
 | REWR | | Rewrite preserving meaning |
 | DIFF | Δ | Show differences |
 
-### Analysis (18)
+### Analysis (17)
 
 | Verb | Alias | Meaning |
 |------|-------|---------|
@@ -161,7 +179,9 @@ Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blo
 | AUDT | | Audit |
 | VALD | | Validate against schema or rule |
 | CLSF | | Classify into categories |
-| JUDGE | | Assess across 11 v5.0 dimensions, resolve to an action mode |
+
+Judgment is not a verb: v5.0 assessment is expressed by the `::JUDGE` declaration
+(see below), keeping the verb set at 88 per the spec's no-new-verbs rule.
 
 ### Generation (10)
 
@@ -405,6 +425,16 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 | E500 | Dependency Unavailable |
 | E501 | Ambiguous Instruction |
 | E502 | Unsupported Format |
+
+---
+
+## Dataset File
+
+[train.csv](train.csv) carries the full registry as rows of
+`type,name,alias,category,meaning,values`. Row types: `verb` (88), `modifier` (29),
+`entity` (22: Core + External + Role), `declaration` (32 structural),
+`declaration_narrative` (13 SOUL), `dimension` (the 11 judgment dimensions),
+`mode` (M1–M8).
 
 ---
 
