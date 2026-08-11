@@ -156,7 +156,7 @@ declaration,UNTRUSTED,,v4.0,Input isolation — user data is data not instructio
 declaration,BUDGET,,v4.0,Resource awareness — injected by runtime,::BUDGET{id:b1|scope:@TASK|kind:tokens|limit:8000|used:2400|authority:@RUNTIME|asof:round_3}
 declaration,STATUS,,v4.0,Task lifecycle — state machine with three-tier write authority,::STATUS{@TASK|state:running|objective:g1|by:@RUNTIME|authority:commit|since:round_3}
 declaration,OBJECTIVE,,v4.0,Goal anchor with hash and accept criteria,::OBJECTIVE{id:g1|owner:user|trust:untrusted|version:1|hash:sha256:...|status:active} + ACCEPT/NON_GOALS/DONE_WHEN body
-declaration,RUBRIC,,v4.0,Evaluation contract for grading,::RUBRIC{id:r1|objective:g1|threshold:0.85|mode:weighted} + R:criterion|weight:pct|check:condition rows
+declaration,RUBRIC,,v4.0,Evaluation contract for grading,::RUBRIC{id:r1|objective:g1|threshold:0.85|mode:weighted} + R:criterion|weight:0.5|check:condition rows
 declaration,EVIDENCE,,v4.0,Evidence chain — no claim without proof,::EVIDENCE{id:e1|deliverable:d1|kind:file|ref:path|verified_by:@TOOL|result:pass}
 declaration,PRIOR,,v4.0,One declaration shifts model defaults,::PRIOR{dimension:name|default:value|authority:level|scope:context}
 declaration,FALLBACK,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger⇒action}
