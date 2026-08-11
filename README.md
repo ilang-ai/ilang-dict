@@ -14,7 +14,7 @@ license: mit
 
 # I-Lang Dictionary v5.0
 
-**89 verbs. 13 Greek aliases. 29 modifiers. 22 entities. 31 declarations. Now includes the v5.0 judgment vocabulary.**
+**89 verbs. 13 Greek aliases. 29 modifiers. 22 entities. 32 declarations. Now includes the v5.0 judgment vocabulary.**
 
 The complete verb dictionary for I-Lang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
@@ -338,7 +338,8 @@ a registered name to different semantics.
 
 Resolution order: core → external → role → document custom → runtime registry.
 An unresolvable name is `E200`; a name that resolves but is unavailable in the current
-environment is `E201`, which is recoverable and degrades per v4.0 §0.1.
+environment is `E201`, which is recoverable and degrades per v4.0 §0.1. Rebinding a
+registered name to foreign semantics is `E202`.
 
 Common agent-identity conventions — `@MSG` (current inbound message), `@SYS_PROMPT`
 (the prompt document), `@ALL` (every declaration in the document) — are custom
@@ -346,7 +347,7 @@ entities under this rule, not registry additions.
 
 ---
 
-## Declarations (31 structural + 13 narrative)
+## Declarations (32 structural + 13 narrative)
 
 Structural declarations, by layer:
 
@@ -355,6 +356,11 @@ Structural declarations, by layer:
 | v3.0 communication | 14 | `::STATE` `::TRUST` `::ALIVE` `::MEMORY` `::GENE` `::GENE_MUTABLE` `::RULE` `::ACTIVATE` `::FACT` `::LESSON` `::PROGRESS` `::PRIORITY` `::DECAY` `::IMMUNE` |
 | v4.0 execution | 8 | `::UNTRUSTED` `::BUDGET` `::STATUS` `::OBJECTIVE` `::RUBRIC` `::EVIDENCE` `::PRIOR` `::FALLBACK` |
 | v5.0 judgment | 9 | `::JUDGE` `::BOUNDARY` `::DIM` `::MODE` `::FUNC` `::SCHEMA` `::CASE` `::CLAUSE` `::MODULE` |
+| PATCH-2 amendment | 1 | `::LIST` |
+
+`::LIST` is an enumeration block registered 2026-08-11 through the PATCH-2 §1.5
+amendment channel: the header names the collection (`::LIST{@REPOS}`), the body is
+one prose line per item.
 
 Narrative (SOUL layer, v3.0 §7), 13: `::SAY` `::THINK` `::ACT` `::DECIDE` `::DISCOVER`
 `::CREATE` `::EVENT` `::SILENCE` `::META` `::IRONY` `::FORESHADOW` `::CALLBACK`
@@ -386,6 +392,7 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 |------|---------|
 | E200 | Entity Not Found |
 | E201 | Unsupported Entity |
+| E202 | Entity Rebinding |
 | E300 | Syntax Error |
 | E301 | Type Mismatch |
 | E302 | Invalid Modifier |
