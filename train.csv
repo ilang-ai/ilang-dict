@@ -90,7 +90,7 @@ verb,BATC,Π,Batch,Apply verb to each item in list,
 modifier,src,,modifier,Explicit source,"entity, URI"
 modifier,dst,,modifier,Explicit destination,"entity, URI"
 modifier,path,,modifier,Path within entity,string
-modifier,fmt,,modifier,Output format,"text, json, md, csv, xml, html, email"
+modifier,fmt,,modifier,Output format,"text, json, md, csv, xml, html, email, png, jpg, webp, svg, gif, mp4, webm, wav, mp3"
 modifier,lng,,modifier,Language,"ISO 639-1 (en, zh, ja)"
 modifier,sty,,modifier,Style,"pro, casual, code, bullets"
 modifier,ton,,modifier,Tone,"urgent, neutral, formal"
@@ -112,10 +112,30 @@ modifier,cap,,modifier,Capacity,"bytes, tokens"
 modifier,pri,,modifier,Priority,"p0, p1, p2"
 modifier,col,,modifier,Columns,comma separated
 modifier,row,,modifier,Rows,index array
-modifier,frm,,modifier,From (time),timestamp
-modifier,to,,modifier,To (time),timestamp
+modifier,frm,,modifier,"From (time, or interval start)","timestamp, URI, @ENTITY"
+modifier,to,,modifier,"To (time, or interval end)","timestamp, URI, @ENTITY"
 modifier,scp,,modifier,Scope,"global, local, strict"
 modifier,op,,modifier,Operation ref,verb name (for BATC)
+modifier,sbj,,media,Subject identity anchor,"label, @ENTITY, or URI"
+modifier,act,,media,Subject action or pose,free text; static
+modifier,plc,,media,Setting and surroundings,"free text; none, transparent"
+modifier,txt,,media,Verbatim on-artifact text,quoted string
+modifier,pov,,media,Camera viewpoint (shot size/angle/placement),"wide, close_up, eye_level, low_angle, over_shoulder"
+modifier,fcl,,media,Optics (focal length/aperture/depth of field),"35mm, f1.8, macro, fisheye, shallow_dof"
+modifier,mvt,,media,Camera movement,"static, pan_left, tilt_up, dolly_in, orbit, handheld"
+modifier,lgt,,media,Lighting,"golden_hour, backlit, softbox, low_key, neon"
+modifier,pal,,media,Colour and grade,"monochrome, warm_tones, teal_orange, #0B3D2E"
+modifier,mdm,,media,Medium or rendering school,"photo, oil_paint, vector, 3d_render, film_noir, ambient"
+modifier,asp,,media,Aspect ratio,"W:H (1:1, 16:9, 9:16), auto"
+modifier,rsl,,media,Output geometry,"WxH pixels or tier (720p, 1080p, 2k, 4k), auto"
+modifier,qly,,media,Quality tier,"draft, low, std, high, max"
+modifier,dur,,media,Timeline length in seconds,positive number
+modifier,fps,,media,Frame rate,positive integer
+modifier,sed,,media,Reproducibility seed,"non-negative integer, auto"
+modifier,adh,,media,Adherence to the stated instruction,0.00-1.00
+modifier,ref,,media,Reference asset or declared preset,"@ENTITY, URI"
+modifier,dlg,,media,Verbatim spoken lines,quoted string
+modifier,sfx,,media,Non-speech sound,free text; none
 entity,@SRC,,Core,Source payload,
 entity,@DST,,Core,Destination,
 entity,@PREV,,Core,Previous pipe output,
@@ -138,6 +158,9 @@ entity,@SELF,,Role,The agent speaking,authority:proposal
 entity,@AGENT,,Role,"A named agent, self or peer",authority:proposal
 entity,@TASK,,Role,Scope target for ::BUDGET / ::STATUS,
 entity,@TOOL,,Role,Tool-based evidence verifier,
+entity,@IMG,,Media,Image artifact target,profile:media
+entity,@VID,,Media,Video artifact target,profile:media
+entity,@AUD,,Media,Audio artifact target,profile:media
 declaration,STATE,,v3.0,Entity state declaration,"::STATE{@ENTITY, key:value}"
 declaration,TRUST,,v3.0,Trust level between entities,"::TRUST{@A→@B, 0.0→1.0}"
 declaration,ALIVE,,v3.0,Liveness flag,::ALIVE{boolean}

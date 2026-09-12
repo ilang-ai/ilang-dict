@@ -14,7 +14,7 @@ license: mit
 
 # I-Lang Dictionary v5.0
 
-**88 verbs. 13 Greek aliases. 29 modifiers. 22 entities. 32 declarations. Now includes the v5.0 judgment vocabulary.**
+**88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 32 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
 
 The complete verb dictionary for I-Lang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
@@ -266,14 +266,14 @@ Judgment is not a verb: v5.0 assessment is expressed by the `::JUDGE` declaratio
 
 ---
 
-## Modifiers (29)
+## Modifiers (29 core)
 
 | Mod | Meaning | Values |
 |-----|---------|--------|
 | src | Explicit source | entity, URI |
 | dst | Explicit destination | entity, URI |
 | path | Path within entity | string |
-| fmt | Output format | text, json, md, csv, xml, html, email |
+| fmt | Output format | text, json, md, csv, xml, html, email; media containers png, jpg, webp, svg, gif, mp4, webm, wav, mp3 |
 | lng | Language | ISO 639-1 (en, zh, ja) |
 | sty | Style | pro, casual, code, bullets |
 | ton | Tone | urgent, neutral, formal |
@@ -295,10 +295,39 @@ Judgment is not a verb: v5.0 assessment is expressed by the `::JUDGE` declaratio
 | pri | Priority | p0, p1, p2 |
 | col | Columns | comma separated |
 | row | Rows | index array |
-| frm | From (time) | timestamp |
-| to | To (time) | timestamp |
+| frm | From (time, or interval start) | timestamp, URI, @ENTITY |
+| to | To (time, or interval end) | timestamp, URI, @ENTITY |
 | scp | Scope | global, local, strict |
 | op | Operation ref | verb name (for BATC) |
+
+---
+
+## Media Profile (20)
+
+Registered in [SPEC-v4.1-MEDIA-PROFILE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.1-MEDIA-PROFILE.md). The profile is counted separately from the 29 core modifiers and is in force only where an operation targets `@IMG`, `@VID` or `@AUD`. Core modifiers keep their meaning inside media operations: exclusions stay on `exc`, containers on `fmt`, first and last frame on `frm` and `to`, batch count on `lim`, and `sty` keeps its four text values.
+
+| Key | Applies to | Meaning | Values |
+|-----|------------|---------|--------|
+| sbj | IMG VID AUD | Subject identity anchor | label, @ENTITY, or URI |
+| act | IMG VID | Subject action or pose | free text; static |
+| plc | IMG VID | Setting and surroundings | free text; none, transparent |
+| txt | IMG VID | Verbatim on-artifact text | quoted string |
+| pov | IMG VID | Camera viewpoint (shot size/angle/placement) | wide, close_up, eye_level, low_angle, over_shoulder |
+| fcl | IMG VID | Optics (focal length/aperture/depth of field) | 35mm, f1.8, macro, fisheye, shallow_dof |
+| mvt | VID | Camera movement | static, pan_left, tilt_up, dolly_in, orbit, handheld |
+| lgt | IMG VID | Lighting | golden_hour, backlit, softbox, low_key, neon |
+| pal | IMG VID | Colour and grade | monochrome, warm_tones, teal_orange, #0B3D2E |
+| mdm | IMG VID AUD | Medium or rendering school | photo, oil_paint, vector, 3d_render, film_noir, ambient |
+| asp | IMG VID | Aspect ratio | W:H (1:1, 16:9, 9:16), auto |
+| rsl | IMG VID | Output geometry | WxH pixels or tier (720p, 1080p, 2k, 4k), auto |
+| qly | IMG VID AUD | Quality tier | draft, low, std, high, max |
+| dur | VID AUD | Timeline length in seconds | positive number |
+| fps | VID | Frame rate | positive integer |
+| sed | IMG VID AUD | Reproducibility seed | non-negative integer, auto |
+| adh | IMG VID AUD | Adherence to the stated instruction | 0.00-1.00 |
+| ref | IMG VID AUD | Reference asset or declared preset | @ENTITY, URI |
+| dlg | VID AUD | Verbatim spoken lines | quoted string |
+| sfx | VID AUD | Non-speech sound | free text; none |
 
 ---
 
@@ -345,6 +374,16 @@ developer authority is expressed as `::GENE` / `::RULE` blocks in the system pro
 | @TASK | — | Scope target for `::BUDGET` / `::STATUS` |
 | @TOOL | — | Tool-based evidence verifier |
 
+### Media
+
+Artifact targets registered in v4.1. They form their own tier, so Core, External and Role keep their counts, and the media profile is in force only where one of them is the target.
+
+| Entity | Meaning |
+|--------|---------|
+| @IMG | Image artifact target |
+| @VID | Video artifact target |
+| @AUD | Audio artifact target |
+
 ### Custom
 
 Any `@UPPERCASE_NAME` is a valid entity; implementations define their own registries.
@@ -389,7 +428,7 @@ Narrative (SOUL layer, v3.0 §7), 13: `::SAY` `::THINK` `::ACT` `::DECIDE` `::DI
 Every declaration takes one of three block shapes (inline, header + indented body,
 brace span), and every body line takes one of eight forms (`T:`/`A:` traits, fields,
 structured fields, vectors, tags, prose, nested declarations, operation chains).
-Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-2.md)
+Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/archive/SPEC-v5.0-PATCH-2.md)
 
 ---
 
@@ -431,8 +470,8 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 ## Dataset File
 
 [train.csv](train.csv) carries the full registry as rows of
-`type,name,alias,category,meaning,values`. Row types: `verb` (88), `modifier` (29),
-`entity` (22: Core + External + Role), `declaration` (32 structural),
+`type,name,alias,category,meaning,values`. Row types: `verb` (88), `modifier` (49: 29 core, plus 20 media profile rows with category `media`),
+`entity` (25: Core + External + Role + Media), `declaration` (32 structural),
 `declaration_narrative` (13 SOUL), `dimension` (the 11 judgment dimensions),
 `mode` (M1–M8).
 
@@ -443,11 +482,12 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 | Resource | Link |
 |----------|------|
 | Protocol Spec | [ilang-ai/ilang-spec](https://github.com/ilang-ai/ilang-spec) |
-| Declaration grammar + entity registry | [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-2.md) |
+| Declaration grammar + entity registry | [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/archive/SPEC-v5.0-PATCH-2.md) |
+| Media profile (v4.1) | [SPEC-v4.1-MEDIA-PROFILE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.1-MEDIA-PROFILE.md) |
 | Website | [ilang.ai](https://ilang.ai) |
 | All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
 | Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) |
-| Book (Specification) | [Amazon](https://www.amazon.com/dp/B0F5FV64Q2) |
+| Book (Specification) | [Amazon](https://www.amazon.com/dp/B0GX32GXF2) |
 | Academic Paper | [ResearchGate](https://www.researchgate.net/publication/389513037) |
 
 ---
