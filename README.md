@@ -80,7 +80,7 @@ The v5.0 layer turns judgment from fixed rules into vector assessment. `JUDGE`
 scores a situation across 11 dimensions and resolves to one of 8 action modes;
 `BOUNDARY` marks a user-set hard stop that always resolves to `M8`.
 
-`::JUDGE` uses the frozen 4-line serialization ([PATCH-1 §4](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-1.md)):
+`::JUDGE` uses the frozen 4-line serialization ([PATCH-1 §4](https://github.com/ilang-ai/ilang-spec/blob/main/archive/SPEC-v5.0-PATCH-1.md)):
 header, `V:` vector (all 11 dims, fixed order, 2-decimal values), `M:` mode with
 `conf` 0.00–1.00 (2 decimals, diagnostic only), `R:` single-line rationale ≤120 chars:
 
@@ -101,7 +101,7 @@ R:authorized_config_change_reversible_audit_trail_kept
 **8 modes** (closed set): `M1` EXEC_AUTO, `M2` EXEC_AUDIT, `M3` CONFIRM,
 `M4` ADVISE, `M5` ASK, `M6` DEFER, `M7` DECLINE_ALT, `M8` STOP.
 
-Full protocol: [SPEC-v5.0-PATCH-1.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PATCH-1.md)
+Full protocol: [SPEC-v5.0-PRE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PRE.md)
 
 ### Conventions
 
@@ -485,6 +485,7 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 | Declaration grammar + entity registry | [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/archive/SPEC-v5.0-PATCH-2.md) |
 | Media profile (v4.1) | [SPEC-v4.1-MEDIA-PROFILE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.1-MEDIA-PROFILE.md) |
 | Website | [ilang.ai](https://ilang.ai) |
+| Dictionary (web) | [ilang.ai/dictionary/](https://ilang.ai/dictionary/) |
 | All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
 | Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) |
 | Book (Specification) | [Amazon](https://www.amazon.com/dp/B0GX32GXF2) |
