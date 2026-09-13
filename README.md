@@ -24,6 +24,12 @@ Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 
 iLang Inc. | Palm Media Technology | ilang:v5.0:2026-07-03
 
+- Official site: [https://ilang.ai](https://ilang.ai)
+- Specification: [https://ilang.ai/spec/](https://ilang.ai/spec/)
+- Concept DOI: [10.5281/zenodo.21821452](https://doi.org/10.5281/zenodo.21821452)
+- Creator: [Long Quan Zhu](https://orcid.org/0009-0004-4540-8082) (Max, @SUN)
+- Company: iLang Inc.
+
 ---
 
 ## Syntax
