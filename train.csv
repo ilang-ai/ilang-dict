@@ -106,7 +106,7 @@ modifier,mch,,modifier,Match pattern,glob (default) or regex with typ=regex
 modifier,exc,,modifier,Exclude pattern,glob or regex
 modifier,dep,,modifier,Depth,integer
 modifier,rng,,modifier,Range,start:end
-modifier,typ,,modifier,Type expectation,"str, int, bool, regex"
+modifier,typ,,modifier,Type expectation,"str, int, bool, regex, mask"
 modifier,enc,,modifier,Encoding,"utf8, base64, hex"
 modifier,cap,,modifier,Capacity,"bytes, tokens"
 modifier,pri,,modifier,Priority,"p0, p1, p2"

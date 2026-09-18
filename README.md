@@ -295,7 +295,7 @@ Judgment is not a verb: v5.0 assessment is expressed by the `::JUDGE` declaratio
 | exc | Exclude pattern | glob or regex |
 | dep | Depth | integer |
 | rng | Range | start:end |
-| typ | Type expectation | str, int, bool, regex |
+| typ | Type expectation | str, int, bool, regex, mask |
 | enc | Encoding | utf8, base64, hex |
 | cap | Capacity | bytes, tokens |
 | pri | Priority | p0, p1, p2 |
