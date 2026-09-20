@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use ilang-dict, please cite it as below."
+title: "I-Lang Dictionary: the complete vocabulary of the I-Lang protocol"
+abstract: >-
+  The complete reference vocabulary for I-Lang v5.0: 88 verbs in 9 categories,
+  13 Greek aliases, 29 core modifiers plus the 20-key media profile, 25
+  entities (17 addressable and 8 role) and 32 declarations, including the v5.0
+  judgment vocabulary and the v4.1 media profile for image, video and audio.
+  The repository ships the human-readable dictionary and a CSV table of the
+  same entries for machine use.
+type: software
+authors:
+  - given-names: "Long Quan"
+    family-names: "Zhu"
+    orcid: "https://orcid.org/0009-0004-4540-8082"
+    affiliation: "iLang Inc."
+repository-code: "https://github.com/ilang-ai/ilang-dict"
+url: "https://github.com/ilang-ai/ilang-dict"
+license: MIT
+version: "2.2.2"
+date-released: "2026-09-21"
+keywords:
+  - I-Lang
+  - dictionary
+  - controlled vocabulary
+  - protocol
+  - AI agents
+  - prompt engineering
