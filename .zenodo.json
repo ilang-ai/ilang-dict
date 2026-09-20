@@ -1,0 +1,37 @@
+{
+  "title": "I-Lang Dictionary: the complete vocabulary of the I-Lang protocol",
+  "description": "<p>The complete reference vocabulary for I-Lang v5.0: 88 verbs in 9 categories, 13 Greek aliases, 29 core modifiers plus the 20-key media profile, 25 entities (17 addressable and 8 role) and 32 declarations, including the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio. The repository ships the human-readable dictionary and a CSV table of the same entries for machine use.</p>",
+  "version": "2.2.2",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Zhu, Long Quan",
+      "orcid": "0009-0004-4540-8082",
+      "affiliation": "iLang Inc."
+    }
+  ],
+  "keywords": [
+    "I-Lang",
+    "dictionary",
+    "controlled vocabulary",
+    "protocol",
+    "AI agents",
+    "prompt engineering"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/ilang-ai/ilang-dict",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://ilang.ai/spec/",
+      "relation": "isDocumentedBy",
+      "resource_type": "publication-technicalnote",
+      "scheme": "url"
+    }
+  ]
+}
