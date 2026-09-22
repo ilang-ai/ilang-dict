@@ -1,6 +1,6 @@
 {
-  "title": "I-Lang Dictionary: the complete vocabulary of the I-Lang protocol",
-  "description": "<p>The complete reference vocabulary for I-Lang v5.0: 88 verbs in 9 categories, 13 Greek aliases, 29 core modifiers plus the 20-key media profile, 25 entities (17 addressable and 8 role) and 32 declarations, including the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio. The repository ships the human-readable dictionary and a CSV table of the same entries for machine use.</p>",
+  "title": "iLang Dictionary: the complete vocabulary of the iLang protocol",
+  "description": "<p>The complete reference vocabulary for iLang v5.0: 88 verbs in 9 categories, 13 Greek aliases, 29 core modifiers plus the 20-key media profile, 25 entities (17 addressable and 8 role) and 32 declarations, including the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio. The repository ships the human-readable dictionary and a CSV table of the same entries for machine use.</p>",
   "version": "2.2.2",
   "upload_type": "software",
   "license": "MIT",
@@ -13,7 +13,7 @@
     }
   ],
   "keywords": [
-    "I-Lang",
+    "iLang",
     "dictionary",
     "controlled vocabulary",
     "protocol",

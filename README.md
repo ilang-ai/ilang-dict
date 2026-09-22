@@ -12,13 +12,13 @@ tags:
 license: mit
 ---
 
-# I-Lang Dictionary v5.0
+# iLang Dictionary v5.0
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22865123.svg)](https://doi.org/10.5281/zenodo.22865123)
 
 **88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 32 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
 
-The complete verb dictionary for I-Lang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
+The complete verb dictionary for iLang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. iLang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
 ## Genesis
 
@@ -442,7 +442,7 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 
 ## Quick Reference
 
-| Natural Language | I-Lang |
+| Natural Language | iLang |
 |------------------|--------|
 | Read config from GitHub, format as JSON | `[READ:@GH|path=config.json]=>[FMT|fmt=json]` |
 | Summarize previous in 3 bullets | `[Σ:@PREV|sty=bullets,len=3]` |
@@ -501,7 +501,7 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 
 ---
 
-I-Lang v5.0 | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
+iLang v5.0 | Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed.
 iLang Inc. | Palm Media Technology | MIT License
 ilang.ai | github.com/ilang-ai
 
