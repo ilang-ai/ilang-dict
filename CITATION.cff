@@ -17,7 +17,7 @@ authors:
 repository-code: "https://github.com/ilang-ai/ilang-dict"
 url: "https://github.com/ilang-ai/ilang-dict"
 license: MIT
-version: "2.2.2"
+version: "2.2.3"
 date-released: "2026-09-21"
 keywords:
   - iLang

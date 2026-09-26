@@ -373,7 +373,7 @@ developer authority is expressed as `::GENE` / `::RULE` blocks in the system pro
 
 | Entity | Authority | Meaning |
 |--------|-----------|---------|
-| @SYSTEM | system | Protocol-level rules; highest authority |
+| @SYSTEM | system | Rules enforced by code outside the model; highest authority |
 | @RUNTIME | runtime | Harness/orchestrator; `authority:commit` |
 | @GRADER | verification | Independent grader; `authority:verification` |
 | @USER | user | Human principal; owns `::OBJECTIVE` |
