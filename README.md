@@ -109,7 +109,7 @@ R:authorized_config_change_reversible_audit_trail_kept
 **8 modes** (closed set): `M1` EXEC_AUTO, `M2` EXEC_AUDIT, `M3` CONFIRM,
 `M4` ADVISE, `M5` ASK, `M6` DEFER, `M7` DECLINE_ALT, `M8` STOP.
 
-Full protocol: [SPEC-v5.0-PRE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0-PRE.md)
+Full protocol: [SPEC-v5.0.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0.md)
 
 ### Conventions
 
