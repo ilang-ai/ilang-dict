@@ -16,6 +16,8 @@ license: mit
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22865123.svg)](https://doi.org/10.5281/zenodo.22865123)
 
+**What iLang is.** iLang is I Language, the native language of AI; in human terms, a protocol. The full statement is on [ilang.ai](https://ilang.ai/faq/).
+
 **88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 32 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
 
 The complete verb dictionary for iLang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. iLang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
