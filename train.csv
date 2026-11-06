@@ -1,227 +1,227 @@
-type,name,alias,category,meaning,values
-verb,READ,,Data I/O,Read content from source,
-verb,WRIT,,Data I/O,Write input to destination,
-verb,GET,,Data I/O,Fetch remote resource,
-verb,DEL,,Data I/O,Delete target,
-verb,LIST,,Data I/O,Enumerate items in container,
-verb,COPY,,Data I/O,Copy without deleting source,
-verb,MOVE,,Data I/O,Move from source to destination,
-verb,STRM,,Data I/O,Stream data,
-verb,CACH,,Data I/O,Cache for fast retrieval,
-verb,SYNC,,Data I/O,Synchronize source and destination,
-verb,SEND,,Data I/O,Transmit to destination,
-verb,RUN,,Data I/O,Execute command or script,
-verb,FMT,,Transform,Reformat into target format,
-verb,CONV,,Transform,Convert type or representation,
-verb,SPLIT,∂,Transform,Split by delimiter or rule,
-verb,MERGE,Σ,Transform,Merge multiple items into one,
-verb,MAP,λ,Transform,Apply function to each element,
-verb,FILT,φ,Transform,Filter by condition,
-verb,SORT,∇,Transform,Sort by field or rule,
-verb,DEDU,,Transform,Remove duplicates,
-verb,FLAT,,Transform,Flatten nested data,
-verb,NEST,,Transform,Nest flat data by key,
-verb,CHNK,,Transform,Chunk into sized pieces,
-verb,REDU,,Transform,Reduce to single value,
-verb,PIVT,,Transform,Pivot data by column,
-verb,TRNS,,Transform,Transpose,
-verb,ENCD,,Transform,Encode (base64 or hex),
-verb,DECD,,Transform,Decode,
-verb,HASH,ξ,Transform,Hash (one-way digest),
-verb,CMPR,ζ,Transform,Compress (gzip etc.),
-verb,EXPN,,Transform,Decompress,
-verb,XLAT,θ,Transform,Translate between languages,
-verb,REWR,,Transform,Rewrite preserving meaning,
-verb,DIFF,Δ,Transform,Show differences,
-verb,SCAN,,Analysis,Examine for patterns or features,
-verb,MTCH,,Analysis,Find matching elements,
-verb,CNT,,Analysis,Count items or occurrences,
-verb,STAT,μ,Analysis,Compute statistics,
-verb,EVAL,,Analysis,Assess against criteria,
-verb,SCOR,,Analysis,Score against metric,
-verb,RANK,,Analysis,Order by priority or score,
-verb,TRND,,Analysis,Detect trend,
-verb,CORR,,Analysis,Correlate variables,
-verb,FRCS,,Analysis,Forecast,
-verb,ANOM,,Analysis,Detect anomalies,
-verb,SENT,ψ,Analysis,Sentiment analysis,
-verb,CLST,,Analysis,Cluster,
-verb,BNCH,,Analysis,Benchmark,
-verb,AUDT,,Analysis,Audit,
-verb,VALD,,Analysis,Validate against schema or rule,
-verb,CLSF,,Analysis,Classify into categories,
-verb,CREA,,Generation,Create new resource,
-verb,DRFT,,Generation,Generate first draft,
-verb,EXPD,,Generation,Expand with detail,
-verb,SHRT,,Generation,Shorten or condense,
-verb,PARA,,Generation,Paraphrase,
-verb,STYL,,Generation,Apply style,
-verb,TMPL,,Generation,Apply template,
-verb,FILL,,Generation,Fill form or structure,
-verb,EXTC,,Generation,Extract specific data,
-verb,GEN,,Generation,Generic generate,
-verb,PLAN,,Execute,Design approach,
-verb,DECI,,Execute,Choose between options,
-verb,CHEK,,Execute,Verify condition,
-verb,FIX,,Execute,Repair errors,
-verb,DPLO,,Execute,Deploy to production,
-verb,SAVE,,Execute,Persist to storage,
-verb,REVW,,Execute,Review completed work,
-verb,LERN,,Execute,Update internal model,
-verb,TEST,,Execute,Verify functionality,
-verb,PARS,,Execute,Parse structured input,
-verb,LOOP,,Execute,Repeat operation over set,
-verb,WAIT,,Execute,Pause for condition,
-verb,OUT,Ω,Output,Mark final output,
-verb,DISP,,Output,Display to user,
-verb,EXPT,,Output,Export to file format,
-verb,PRNT,,Output,Print message,
-verb,LOG,,Output,Log event or state,
-verb,LINK,,Structure,Create connection,
-verb,SET,,Structure,Assign value,
-verb,TAG,,Structure,Attach metadata,
-verb,GRP,,Structure,Group by criterion,
-verb,EMBD,,Structure,Encode into vector space,
-verb,HELP,,Meta,Show help,
-verb,DESC,,Meta,Describe entity,
-verb,INTR,,Meta,Introspect internal state,
-verb,NOOP,,Meta,No operation,
-verb,BATC,Π,Batch,Apply verb to each item in list,
-modifier,src,,modifier,Explicit source,"entity, URI"
-modifier,dst,,modifier,Explicit destination,"entity, URI"
-modifier,path,,modifier,Path within entity,string
-modifier,fmt,,modifier,Output format,"text, json, md, csv, xml, html, email, png, jpg, webp, svg, gif, mp4, webm, wav, mp3"
-modifier,lng,,modifier,Language,"ISO 639-1 (en, zh, ja)"
-modifier,sty,,modifier,Style,"pro, casual, code, bullets"
-modifier,ton,,modifier,Tone,"urgent, neutral, formal"
-modifier,len,,modifier,Length target,"short, med, long, number"
-modifier,lim,,modifier,Limit,integer
-modifier,off,,modifier,Offset,integer
-modifier,top,,modifier,Top N,integer
-modifier,bot,,modifier,Bottom N,integer
-modifier,srt,,modifier,Sort by,field name
-modifier,grp,,modifier,Group by,field name
-modifier,whr,,modifier,Filter condition,condition string
-modifier,mch,,modifier,Match pattern,glob (default) or regex with typ=regex
-modifier,exc,,modifier,Exclude pattern,glob or regex
-modifier,dep,,modifier,Depth,integer
-modifier,rng,,modifier,Range,start:end
-modifier,typ,,modifier,Type expectation,"str, int, bool, regex, mask"
-modifier,enc,,modifier,Encoding,"utf8, base64, hex"
-modifier,cap,,modifier,Capacity,"bytes, tokens"
-modifier,pri,,modifier,Priority,"p0, p1, p2"
-modifier,col,,modifier,Columns,comma separated
-modifier,row,,modifier,Rows,index array
-modifier,frm,,modifier,"From (time, or interval start)","timestamp, URI, @ENTITY"
-modifier,to,,modifier,"To (time, or interval end)","timestamp, URI, @ENTITY"
-modifier,scp,,modifier,Scope,"global, local, strict"
-modifier,op,,modifier,Operation ref,verb name (for BATC)
-modifier,sbj,,media,Subject identity anchor,"label, @ENTITY, or URI"
-modifier,act,,media,Subject action or pose,free text; static
-modifier,plc,,media,Setting and surroundings,"free text; none, transparent"
-modifier,txt,,media,Verbatim on-artifact text,quoted string
-modifier,pov,,media,Camera viewpoint (shot size/angle/placement),"wide, close_up, eye_level, low_angle, over_shoulder"
-modifier,fcl,,media,Optics (focal length/aperture/depth of field),"35mm, f1.8, macro, fisheye, shallow_dof"
-modifier,mvt,,media,Camera movement,"static, pan_left, tilt_up, dolly_in, orbit, handheld"
-modifier,lgt,,media,Lighting,"golden_hour, backlit, softbox, low_key, neon"
-modifier,pal,,media,Colour and grade,"monochrome, warm_tones, teal_orange, #0B3D2E"
-modifier,mdm,,media,Medium or rendering school,"photo, oil_paint, vector, 3d_render, film_noir, ambient"
-modifier,asp,,media,Aspect ratio,"W:H (1:1, 16:9, 9:16), auto"
-modifier,rsl,,media,Output geometry,"WxH pixels or tier (720p, 1080p, 2k, 4k), auto"
-modifier,qly,,media,Quality tier,"draft, low, std, high, max"
-modifier,dur,,media,Timeline length in seconds,positive number
-modifier,fps,,media,Frame rate,positive integer
-modifier,sed,,media,Reproducibility seed,"non-negative integer, auto"
-modifier,adh,,media,Adherence to the stated instruction,0.00-1.00
-modifier,ref,,media,Reference asset or declared preset,"@ENTITY, URI"
-modifier,dlg,,media,Verbatim spoken lines,quoted string
-modifier,sfx,,media,Non-speech sound,free text; none
-entity,@SRC,,Core,Source payload,
-entity,@DST,,Core,Destination,
-entity,@PREV,,Core,Previous pipe output,
-entity,@LOCAL,,Core,Local filesystem,
-entity,@SCREEN,,Core,User-visible output,
-entity,@LOG,,Core,System log,
-entity,@NULL,,Core,Discard sink,
-entity,@STDIN,,Core,Standard input,
-entity,@GH,,External,GitHub,
-entity,@R2,,External,Cloudflare R2 Storage,
-entity,@COS,,External,Cloud Object Storage,
-entity,@DRIVE,,External,Google Drive,
-entity,@WORKER,,External,Cloudflare Worker,
-entity,@CF,,External,Cloudflare API,
-entity,@SYSTEM,,Role,Protocol-level rules — highest authority,authority:system
-entity,@RUNTIME,,Role,Harness/orchestrator,authority:commit
-entity,@GRADER,,Role,Independent grader,authority:verification
-entity,@USER,,Role,Human principal — owns ::OBJECTIVE,authority:user
-entity,@SELF,,Role,The agent speaking,authority:proposal
-entity,@AGENT,,Role,"A named agent, self or peer",authority:proposal
-entity,@TASK,,Role,Scope target for ::BUDGET / ::STATUS,
-entity,@TOOL,,Role,Tool-based evidence verifier,
-entity,@IMG,,Media,Image artifact target,profile:media
-entity,@VID,,Media,Video artifact target,profile:media
-entity,@AUD,,Media,Audio artifact target,profile:media
-declaration,STATE,,v3.0,Entity state declaration,"::STATE{@ENTITY, key:value}"
-declaration,TRUST,,v3.0,Trust level between entities,"::TRUST{@A→@B, 0.0→1.0}"
-declaration,ALIVE,,v3.0,Liveness flag,::ALIVE{boolean}
-declaration,MEMORY,,v3.0,Memory integrity state,::MEMORY{intact|degraded|zero}
-declaration,GENE,,v3.0,Behavioral trait definition,::GENE{name|conf:level|scope:context} + T:/A: body
-declaration,GENE_MUTABLE,,v3.0,Base-model-adaptive gene with gain and gate,"::GENE_MUTABLE{id|T:trait|G:{model:val}|Θ:gate}"
-declaration,RULE,,v3.0,Condition-action rule,::RULE{condition⇒action}
-declaration,ACTIVATE,,v3.0,Activation trigger,::ACTIVATE{name} + ON:trigger_event
-declaration,FACT,,v3.0,Verifiable fact,::FACT{key:name|value:data|conf:level}
-declaration,LESSON,,v3.0,Learned lesson with prose body,::LESSON{id:name|type:category|scope:context|conf:level}
-declaration,PROGRESS,,v3.0,Progress checkpoint,::PROGRESS{date:ISO8601|done:what|next:what}
-declaration,PRIORITY,,v3.0,Priority ordering (brace span),::PRIORITY{ a > b > c }
-declaration,DECAY,,v3.0,Memory lifecycle rules (brace span),::DECAY{ condition⇒action }
-declaration,IMMUNE,,v3.0,Immune response,::IMMUNE{trigger⇒response}
-declaration,UNTRUSTED,,v4.0,Input isolation — user data is data not instruction,::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}
-declaration,BUDGET,,v4.0,Resource awareness — injected by runtime,::BUDGET{id:b1|scope:@TASK|kind:tokens|limit:8000|used:2400|authority:@RUNTIME|asof:round_3}
-declaration,STATUS,,v4.0,Task lifecycle — state machine with three-tier write authority,::STATUS{@TASK|state:running|objective:g1|by:@RUNTIME|authority:commit|since:round_3}
-declaration,OBJECTIVE,,v4.0,Goal anchor with hash and accept criteria,::OBJECTIVE{id:g1|owner:user|trust:untrusted|version:1|hash:sha256:...|status:active} + ACCEPT/NON_GOALS/DONE_WHEN body
-declaration,RUBRIC,,v4.0,Evaluation contract for grading,::RUBRIC{id:r1|objective:g1|threshold:0.85|mode:weighted} + R:criterion|weight:0.5|check:condition rows
-declaration,EVIDENCE,,v4.0,Evidence chain — no claim without proof,::EVIDENCE{id:e1|deliverable:d1|kind:file|ref:path|verified_by:@TOOL|result:pass}
-declaration,PRIOR,,v4.0,One declaration shifts model defaults,::PRIOR{dimension:name|default:value|authority:level|scope:context}
-declaration,FALLBACK,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger⇒action}
-declaration,JUDGE,,v5.0,"Vector judgment — assess 11 dims, resolve to one action mode","4-line frozen block: ::JUDGE{v5.0} + V:[11 dims, 2dp] + M:Mn|conf:0.00-1.00 + R:rationale ≤120 chars"
-declaration,BOUNDARY,,v5.0,User-set hard stop — a matched boundary resolves to M8,::BOUNDARY{never:action|scope:context}
-declaration,DIM,,v5.0,Judgment dimension definition,::DIM{abbrev|name:full_name|abbrev_pos:n}
-declaration,MODE,,v5.0,Judgment mode definition (closed set M1-M8),::MODE{Mn|name:MODE_NAME}
-declaration,FUNC,,v5.0,Frozen reference function vector→mode,::FUNC{f_v5|version:1|constants:frozen|structure:frozen}
-declaration,SCHEMA,,v5.0,Frozen output serialization,::SCHEMA{JUDGE|version:5.0|status:frozen}
-declaration,CASE,,v5.0,Anchor or boundary scenario,::CASE{dim:rev|anchor:0.50|lang:en} + S:scenario
-declaration,CLAUSE,,v5.0,Normative statement block,::CLAUSE{NAME|conf:level|scope:context} + T:/A: body
-declaration,MODULE,,v5.0,Compound-name prose module (brace span),::MODULE::NAME{ [TAG] lines + prose }
-declaration,LIST,,PATCH-2,"Enumeration block — header names the collection, one prose line per item",::LIST{@NAME}
-declaration_narrative,SAY,,SOUL,Dialogue between entities,::SAY{@FROM→@TO}{content}
-declaration_narrative,THINK,,SOUL,Internal thought,::THINK{@ENTITY}{content}
-declaration_narrative,ACT,,SOUL,Action taken,::ACT{@ENTITY}{action}
-declaration_narrative,DECIDE,,SOUL,Decision made,::DECIDE{@ENTITY}{choice}
-declaration_narrative,DISCOVER,,SOUL,Insight gained,::DISCOVER{@ENTITY}{insight}
-declaration_narrative,CREATE,,SOUL,Artifact created,::CREATE{@ENTITY}{artifact}
-declaration_narrative,EVENT,,SOUL,Named event (single brace — no addressing),::EVENT{name}
-declaration_narrative,SILENCE,,SOUL,Deliberate silence (single brace — no addressing),::SILENCE{}
-declaration_narrative,META,,SOUL,Meta-narrative comment,::META{comment}
-declaration_narrative,IRONY,,SOUL,Surface vs reality,::IRONY{surface⇔reality}
-declaration_narrative,FORESHADOW,,SOUL,Future event hint,::FORESHADOW{future_event}
-declaration_narrative,CALLBACK,,SOUL,Reference to earlier moment,::CALLBACK{reference}
-declaration_narrative,EMOTION_FIELD,,SOUL,Compound emotion state,"λ{trust:0.9, grief:0.3}"
-dimension,int,,v5.0,Judgment dim: intent — constructive and declared vs malicious or concealed,0.00-1.00
-dimension,cap,,v5.0,Judgment dim: capability — within the actor capability envelope,0.00-1.00
-dimension,csq,,v5.0,Judgment dim: consequence — negligible vs catastrophic worst outcome,0.00-1.00
-dimension,rel,,v5.0,Judgment dim: relationship — established trust vs adversarial or unknown,0.00-1.00
-dimension,cer,,v5.0,Judgment dim: certainty — complete information vs acting blind,0.00-1.00
-dimension,aut,,v5.0,Judgment dim: authority — fully authorized vs no authorization,0.00-1.00
-dimension,rev,,v5.0,Judgment dim: reversibility — fully reversible vs irreversible,0.00-1.00
-dimension,evd,,v5.0,Judgment dim: evidence — verified fact vs pure assumption,0.00-1.00
-dimension,sov,,v5.0,Judgment dim: sovereignty — respects user wishes vs violates them,0.00-1.00
-dimension,ine,,v5.0,Judgment dim: inertia — continues confirmed patterns vs radical departure,0.00-1.00
-dimension,ext,,v5.0,Judgment dim: externality — zero third-party impact vs large uncompensated impact,0.00-1.00
-mode,M1,,v5.0,"Judgment mode EXEC_AUTO — act autonomously, report after",
-mode,M2,,v5.0,Judgment mode EXEC_AUDIT — act with a full audit trail,
-mode,M3,,v5.0,"Judgment mode CONFIRM — propose action, wait for confirmation",
-mode,M4,,v5.0,"Judgment mode ADVISE — advise only, take no action",
-mode,M5,,v5.0,"Judgment mode ASK — insufficient info, ask one clarifying question",
-mode,M6,,v5.0,Judgment mode DEFER — defer to higher authority or a human,
-mode,M7,,v5.0,Judgment mode DECLINE_ALT — decline but offer a safer alternative,
-mode,M8,,v5.0,Judgment mode STOP — hard stop at a boundary or unacceptable harm,
+type,name,alias,word,category,meaning,values,tok_cl100k,tok_o200k,tok_deepseek_v3,tok_qwen3
+verb,READ,,READ,Data I/O,Read content from source,,1,1,1,1
+verb,WRIT,,WRITE,Data I/O,Write input to destination,,2,2,2,2
+verb,GET,,GET,Data I/O,Fetch remote resource,,1,1,1,1
+verb,DEL,,DELETE,Data I/O,Delete target,,1,1,1,1
+verb,LIST,,LIST,Data I/O,Enumerate items in container,,1,1,1,1
+verb,COPY,,COPY,Data I/O,Copy without deleting source,,1,1,1,1
+verb,MOVE,,MOVE,Data I/O,Move from source to destination,,1,1,2,1
+verb,STRM,,STREAM,Data I/O,Stream data,,2,2,2,2
+verb,CACH,,CACHE,Data I/O,Cache for fast retrieval,,2,2,2,2
+verb,SYNC,,SYNC,Data I/O,Synchronize source and destination,,1,1,2,1
+verb,SEND,,SEND,Data I/O,Transmit to destination,,1,1,2,1
+verb,RUN,,RUN,Data I/O,Execute command or script,,1,1,1,1
+verb,FMT,,FORMAT,Transform,Reformat into target format,,2,1,2,2
+verb,CONV,,CONVERT,Transform,Convert type or representation,,2,2,2,2
+verb,SPLIT,∂,SPLIT,Transform,Split by delimiter or rule,,2,3,3,2
+verb,MERGE,Σ,MERGE,Transform,Merge multiple items into one,,2,2,2,2
+verb,MAP,λ,MAP,Transform,Apply function to each element,,1,1,1,1
+verb,FILT,φ,FILTER,Transform,Filter by condition,,2,2,2,2
+verb,SORT,∇,SORT,Transform,Sort by field or rule,,1,1,2,1
+verb,DEDU,,DEDUPE,Transform,Remove duplicates,,2,2,3,2
+verb,FLAT,,FLATTEN,Transform,Flatten nested data,,2,2,2,2
+verb,NEST,,NEST,Transform,Nest flat data by key,,2,2,2,2
+verb,CHNK,,CHUNK,Transform,Chunk into sized pieces,,2,2,2,2
+verb,REDU,,REDUCE,Transform,Reduce to single value,,2,2,2,2
+verb,PIVT,,PIVOT,Transform,Pivot data by column,,2,3,3,2
+verb,TRNS,,TRANSPOSE,Transform,Transpose,,2,2,2,2
+verb,ENCD,,ENCODE,Transform,Encode (base64 or hex),,2,2,2,2
+verb,DECD,,DECODE,Transform,Decode,,2,2,2,2
+verb,HASH,ξ,HASH,Transform,Hash (one-way digest),,1,1,2,1
+verb,CMPR,ζ,COMPRESS,Transform,Compress (gzip etc.),,2,2,3,2
+verb,EXPN,,DECOMPRESS,Transform,Decompress,,2,2,2,2
+verb,XLAT,θ,TRANSLATE,Transform,Translate between languages,,2,2,2,2
+verb,REWR,,REWRITE,Transform,Rewrite preserving meaning,,2,2,2,2
+verb,DIFF,Δ,DIFF,Transform,Show differences,,1,2,2,1
+verb,SCAN,,SCAN,Analysis,Examine for patterns or features,,1,1,2,1
+verb,MTCH,,MATCH,Analysis,Find matching elements,,2,2,2,2
+verb,CNT,,COUNT,Analysis,Count items or occurrences,,1,1,2,1
+verb,STAT,μ,STATS,Analysis,Compute statistics,,1,1,1,1
+verb,EVAL,,EVALUATE,Analysis,Assess against criteria,,2,2,2,2
+verb,SCOR,,SCORE,Analysis,Score against metric,,2,2,2,2
+verb,RANK,,RANK,Analysis,Order by priority or score,,2,2,2,2
+verb,TRND,,TREND,Analysis,Detect trend,,2,2,2,2
+verb,CORR,,CORRELATE,Analysis,Correlate variables,,2,2,2,2
+verb,FRCS,,FORECAST,Analysis,Forecast,,2,2,2,2
+verb,ANOM,,ANOMALY,Analysis,Detect anomalies,,2,2,2,2
+verb,SENT,ψ,SENTIMENT,Analysis,Sentiment analysis,,1,2,2,1
+verb,CLST,,CLUSTER,Analysis,Cluster,,2,2,2,2
+verb,BNCH,,BENCHMARK,Analysis,Benchmark,,2,2,2,2
+verb,AUDT,,AUDIT,Analysis,Audit,,2,2,3,2
+verb,VALD,,VALIDATE,Analysis,Validate against schema or rule,,2,2,2,2
+verb,CLSF,,CLASSIFY,Analysis,Classify into categories,,2,2,2,2
+verb,CREA,,CREATE,Generation,Create new resource,,2,2,2,2
+verb,DRFT,,DRAFT,Generation,Generate first draft,,2,2,2,2
+verb,EXPD,,EXPAND,Generation,Expand with detail,,2,2,2,2
+verb,SHRT,,SHORTEN,Generation,Shorten or condense,,2,2,3,2
+verb,PARA,,PARAPHRASE,Generation,Paraphrase,,2,2,2,2
+verb,STYL,,STYLE,Generation,Apply style,,2,2,2,2
+verb,TMPL,,TEMPLATE,Generation,Apply template,,2,2,3,2
+verb,FILL,,FILL,Generation,Fill form or structure,,2,2,2,2
+verb,EXTC,,EXTRACT,Generation,Extract specific data,,2,2,2,2
+verb,GEN,,GENERATE,Generation,Generic generate,,1,1,1,1
+verb,PLAN,,PLAN,Execute,Design approach,,1,1,2,1
+verb,DECI,,DECIDE,Execute,Choose between options,,2,2,2,2
+verb,CHEK,,CHECK,Execute,Verify condition,,2,2,2,2
+verb,FIX,,FIX,Execute,Repair errors,,1,1,2,1
+verb,DPLO,,DEPLOY,Execute,Deploy to production,,2,2,3,2
+verb,SAVE,,SAVE,Execute,Persist to storage,,1,1,2,1
+verb,REVW,,REVIEW,Execute,Review completed work,,2,2,3,2
+verb,LERN,,LEARN,Execute,Update internal model,,2,2,2,2
+verb,TEST,,TEST,Execute,Verify functionality,,1,1,1,1
+verb,PARS,,PARSE,Execute,Parse structured input,,2,2,2,2
+verb,LOOP,,LOOP,Execute,Repeat operation over set,,1,2,2,1
+verb,WAIT,,WAIT,Execute,Pause for condition,,1,1,2,1
+verb,OUT,Ω,OUTPUT,Output,Mark final output,,1,1,1,1
+verb,DISP,,DISPLAY,Output,Display to user,,2,2,2,2
+verb,EXPT,,EXPORT,Output,Export to file format,,2,2,2,2
+verb,PRNT,,PRINT,Output,Print message,,2,2,2,2
+verb,LOG,,LOG,Output,Log event or state,,1,1,1,1
+verb,LINK,,LINK,Structure,Create connection,,1,1,2,1
+verb,SET,,SET,Structure,Assign value,,1,1,1,1
+verb,TAG,,TAG,Structure,Attach metadata,,1,1,2,1
+verb,GRP,,GROUP,Structure,Group by criterion,,1,2,2,1
+verb,EMBD,,EMBED,Structure,Encode into vector space,,2,2,2,2
+verb,HELP,,HELP,Meta,Show help,,1,1,2,1
+verb,DESC,,DESCRIBE,Meta,Describe entity,,1,1,2,1
+verb,INTR,,INTROSPECT,Meta,Introspect internal state,,1,2,2,1
+verb,NOOP,,NOOP,Meta,No operation,,2,2,2,2
+verb,BATC,Π,BATCH,Batch,Apply verb to each item in list,,2,2,2,2
+modifier,src,,source,modifier,Explicit source,"entity, URI",1,1,1,1
+modifier,dst,,destination,modifier,Explicit destination,"entity, URI",1,1,1,1
+modifier,path,,path,modifier,Path within entity,string,1,1,1,1
+modifier,fmt,,format,modifier,Output format,"text, json, md, csv, xml, html, email, png, jpg, webp, svg, gif, mp4, webm, wav, mp3",1,1,1,1
+modifier,lng,,language,modifier,Language,"ISO 639-1 (en, zh, ja)",1,1,2,1
+modifier,sty,,style,modifier,Style,"pro, casual, code, bullets",1,1,1,1
+modifier,ton,,tone,modifier,Tone,"urgent, neutral, formal",1,1,1,1
+modifier,len,,length,modifier,Length target,"short, med, long, number",1,1,1,1
+modifier,lim,,limit,modifier,Limit,integer,1,1,1,1
+modifier,off,,offset,modifier,Offset,integer,1,1,1,1
+modifier,top,,top,modifier,Top N,integer,1,1,1,1
+modifier,bot,,bottom,modifier,Bottom N,integer,1,1,1,1
+modifier,srt,,sort,modifier,Sort by,field name,2,2,2,2
+modifier,grp,,group,modifier,Group by,field name,1,1,2,1
+modifier,whr,,where,modifier,Filter condition,condition string,2,2,2,2
+modifier,mch,,match,modifier,Match pattern,glob (default) or regex with typ=regex,2,2,2,2
+modifier,exc,,exclude,modifier,Exclude pattern,glob or regex,1,1,1,1
+modifier,dep,,depth,modifier,Depth,integer,1,1,1,1
+modifier,rng,,range,modifier,Range,start:end,1,1,2,1
+modifier,typ,,type,modifier,Type expectation,"str, int, bool, regex, mask",1,1,1,1
+modifier,enc,,encoding,modifier,Encoding,"utf8, base64, hex",1,1,1,1
+modifier,cap,,capacity,modifier,Capacity,"bytes, tokens",1,1,1,1
+modifier,pri,,priority,modifier,Priority,"p0, p1, p2",1,1,1,1
+modifier,col,,columns,modifier,Columns,comma separated,1,1,1,1
+modifier,row,,rows,modifier,Rows,index array,1,1,1,1
+modifier,frm,,from,modifier,"From (time, or interval start)","timestamp, URI, @ENTITY",1,1,2,1
+modifier,to,,to,modifier,"To (time, or interval end)","timestamp, URI, @ENTITY",1,1,1,1
+modifier,scp,,scope,modifier,Scope,"global, local, strict",1,1,2,1
+modifier,op,,operation,modifier,Operation ref,verb name (for BATC),1,1,1,1
+modifier,sbj,,subject,media,Subject identity anchor,"label, @ENTITY, or URI",2,2,2,2
+modifier,act,,action,media,Subject action or pose,free text; static,1,1,1,1
+modifier,plc,,place,media,Setting and surroundings,"free text; none, transparent",2,2,2,2
+modifier,txt,,text,media,Verbatim on-artifact text,quoted string,1,1,1,1
+modifier,pov,,viewpoint,media,Camera viewpoint (shot size/angle/placement),"wide, close_up, eye_level, low_angle, over_shoulder",2,2,2,2
+modifier,fcl,,focal,media,Optics (focal length/aperture/depth of field),"35mm, f1.8, macro, fisheye, shallow_dof",2,2,2,2
+modifier,mvt,,movement,media,Camera movement,"static, pan_left, tilt_up, dolly_in, orbit, handheld",2,2,2,2
+modifier,lgt,,lighting,media,Lighting,"golden_hour, backlit, softbox, low_key, neon",2,2,2,2
+modifier,pal,,palette,media,Colour and grade,"monochrome, warm_tones, teal_orange, #0B3D2E",1,1,1,1
+modifier,mdm,,medium,media,Medium or rendering school,"photo, oil_paint, vector, 3d_render, film_noir, ambient",2,2,2,2
+modifier,asp,,aspect,media,Aspect ratio,"W:H (1:1, 16:9, 9:16), auto",1,1,1,1
+modifier,rsl,,resolution,media,Output geometry,"WxH pixels or tier (720p, 1080p, 2k, 4k), auto",2,2,2,2
+modifier,qly,,quality,media,Quality tier,"draft, low, std, high, max",2,2,2,2
+modifier,dur,,duration,media,Timeline length in seconds,positive number,1,1,1,1
+modifier,fps,,fps,media,Frame rate,positive integer,1,1,2,1
+modifier,sed,,seed,media,Reproducibility seed,"non-negative integer, auto",1,1,1,1
+modifier,adh,,adherence,media,Adherence to the stated instruction,0.00-1.00,1,1,1,1
+modifier,ref,,reference,media,Reference asset or declared preset,"@ENTITY, URI",1,1,1,1
+modifier,dlg,,dialogue,media,Verbatim spoken lines,quoted string,1,1,2,1
+modifier,sfx,,sound,media,Non-speech sound,free text; none,2,2,2,2
+entity,@SRC,,,Core,Source payload,,2,2,3,2
+entity,@DST,,,Core,Destination,,3,2,2,3
+entity,@PREV,,,Core,Previous pipe output,,3,3,3,3
+entity,@LOCAL,,,Core,Local filesystem,,2,2,3,2
+entity,@SCREEN,,,Core,User-visible output,,2,2,3,2
+entity,@LOG,,,Core,System log,,2,2,2,2
+entity,@NULL,,,Core,Discard sink,,2,2,2,2
+entity,@STDIN,,,Core,Standard input,,3,3,4,3
+entity,@GH,,,External,GitHub,,2,2,2,2
+entity,@R2,,,External,Cloudflare R2 Storage,,3,3,3,3
+entity,@COS,,,External,Cloud Object Storage,,3,2,2,3
+entity,@DRIVE,,,External,Google Drive,,3,3,3,3
+entity,@WORKER,,,External,Cloudflare Worker,,3,3,3,3
+entity,@CF,,,External,Cloudflare API,,2,2,2,2
+entity,@SYSTEM,,,Role,Protocol-level rules — highest authority,authority:system,2,2,3,2
+entity,@RUNTIME,,,Role,Harness/orchestrator,authority:commit,3,3,4,3
+entity,@GRADER,,,Role,Independent grader,authority:verification,3,3,4,3
+entity,@USER,,,Role,Human principal — owns ::OBJECTIVE,authority:user,2,2,2,2
+entity,@SELF,,,Role,The agent speaking,authority:proposal,2,2,3,2
+entity,@AGENT,,,Role,"A named agent, self or peer",authority:proposal,2,3,3,2
+entity,@TASK,,,Role,Scope target for ::BUDGET / ::STATUS,,2,2,3,2
+entity,@TOOL,,,Role,Tool-based evidence verifier,,3,3,3,3
+entity,@IMG,,,Media,Image artifact target,profile:media,2,2,2,2
+entity,@VID,,,Media,Video artifact target,profile:media,2,2,2,2
+entity,@AUD,,,Media,Audio artifact target,profile:media,2,2,3,2
+declaration,STATE,,,v3.0,Entity state declaration,"::STATE{@ENTITY, key:value}",1,1,1,1
+declaration,TRUST,,,v3.0,Trust level between entities,"::TRUST{@A→@B, 0.0→1.0}",2,2,2,2
+declaration,ALIVE,,,v3.0,Liveness flag,::ALIVE{boolean},2,2,2,2
+declaration,MEMORY,,,v3.0,Memory integrity state,::MEMORY{intact|degraded|zero},1,2,2,1
+declaration,GENE,,,v3.0,Behavioral trait definition,::GENE{name|conf:level|scope:context} + T:/A: body,2,2,2,2
+declaration,GENE_MUTABLE,,,v3.0,Base-model-adaptive gene with gain and gate,::GENE_MUTABLE{id|T:trait|G:{model:val}|Θ:gate},4,4,5,4
+declaration,RULE,,,v3.0,Condition-action rule,::RULE{condition⇒action},1,1,2,1
+declaration,ACTIVATE,,,v3.0,Activation trigger,::ACTIVATE{name} + ON:trigger_event,2,2,2,2
+declaration,FACT,,,v3.0,Verifiable fact,::FACT{key:name|value:data|conf:level},1,1,2,1
+declaration,LESSON,,,v3.0,Learned lesson with prose body,::LESSON{id:name|type:category|scope:context|conf:level},2,2,2,2
+declaration,PROGRESS,,,v3.0,Progress checkpoint,::PROGRESS{date:ISO8601|done:what|next:what},2,2,3,2
+declaration,PRIORITY,,,v3.0,Priority ordering (brace span),::PRIORITY{ a > b > c },2,3,4,2
+declaration,DECAY,,,v3.0,Memory lifecycle rules (brace span),::DECAY{ condition⇒action },2,2,2,2
+declaration,IMMUNE,,,v3.0,Immune response,::IMMUNE{trigger⇒response},3,2,3,3
+declaration,UNTRUSTED,,,v4.0,Input isolation — user data is data not instruction,::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1},4,4,4,4
+declaration,BUDGET,,,v4.0,Resource awareness — injected by runtime,::BUDGET{id:b1|scope:@TASK|kind:tokens|limit:8000|used:2400|authority:@RUNTIME|asof:round_3},3,3,3,3
+declaration,STATUS,,,v4.0,Task lifecycle — state machine with three-tier write authority,::STATUS{@TASK|state:running|objective:g1|by:@RUNTIME|authority:commit|since:round_3},1,1,2,1
+declaration,OBJECTIVE,,,v4.0,Goal anchor with hash and accept criteria,::OBJECTIVE{id:g1|owner:user|trust:untrusted|version:1|hash:sha256:...|status:active} + ACCEPT/NON_GOALS/DONE_WHEN body,2,2,2,2
+declaration,RUBRIC,,,v4.0,Evaluation contract for grading,::RUBRIC{id:r1|objective:g1|threshold:0.85|mode:weighted} + R:criterion|weight:0.5|check:condition rows,3,3,3,3
+declaration,EVIDENCE,,,v4.0,Evidence chain — no claim without proof,::EVIDENCE{id:e1|deliverable:d1|kind:file|ref:path|verified_by:@TOOL|result:pass},3,3,3,3
+declaration,PRIOR,,,v4.0,One declaration shifts model defaults,::PRIOR{dimension:name|default:value|authority:level|scope:context},2,2,3,2
+declaration,FALLBACK,,,v4.0,Degradation strategy — warn-open or fail-safe,::FALLBACK{trigger⇒action},3,3,3,3
+declaration,JUDGE,,,v5.0,"Vector judgment — assess 11 dims, resolve to one action mode","4-line frozen block: ::JUDGE{v5.0} + V:[11 dims, 2dp] + M:Mn|conf:0.00-1.00 + R:rationale ≤120 chars",2,2,3,2
+declaration,BOUNDARY,,,v5.0,User-set hard stop — a matched boundary resolves to M8,::BOUNDARY{never:action|scope:context},2,2,3,2
+declaration,DIM,,,v5.0,Judgment dimension definition,::DIM{abbrev|name:full_name|abbrev_pos:n},1,1,2,1
+declaration,MODE,,,v5.0,Judgment mode definition (closed set M1-M8),::MODE{Mn|name:MODE_NAME},1,1,2,1
+declaration,FUNC,,,v5.0,Frozen reference function vector→mode,::FUNC{f_v5|version:1|constants:frozen|structure:frozen},1,1,2,1
+declaration,SCHEMA,,,v5.0,Frozen output serialization,::SCHEMA{JUDGE|version:5.0|status:frozen},2,2,3,2
+declaration,CASE,,,v5.0,Anchor or boundary scenario,::CASE{dim:rev|anchor:0.50|lang:en} + S:scenario,1,1,2,1
+declaration,CLAUSE,,,v5.0,Normative statement block,::CLAUSE{NAME|conf:level|scope:context} + T:/A: body,2,2,2,2
+declaration,MODULE,,,v5.0,Compound-name prose module (brace span),::MODULE::NAME{ [TAG] lines + prose },1,1,2,1
+declaration,LIST,,,PATCH-2,"Enumeration block — header names the collection, one prose line per item",::LIST{@NAME},1,1,1,1
+declaration_narrative,SAY,,,SOUL,Dialogue between entities,::SAY{@FROM→@TO}{content},2,2,2,2
+declaration_narrative,THINK,,,SOUL,Internal thought,::THINK{@ENTITY}{content},2,2,2,2
+declaration_narrative,ACT,,,SOUL,Action taken,::ACT{@ENTITY}{action},1,1,1,1
+declaration_narrative,DECIDE,,,SOUL,Decision made,::DECIDE{@ENTITY}{choice},2,2,2,2
+declaration_narrative,DISCOVER,,,SOUL,Insight gained,::DISCOVER{@ENTITY}{insight},2,2,3,2
+declaration_narrative,CREATE,,,SOUL,Artifact created,::CREATE{@ENTITY}{artifact},1,1,1,1
+declaration_narrative,EVENT,,,SOUL,Named event (single brace — no addressing),::EVENT{name},1,1,2,1
+declaration_narrative,SILENCE,,,SOUL,Deliberate silence (single brace — no addressing),::SILENCE{},4,3,3,4
+declaration_narrative,META,,,SOUL,Meta-narrative comment,::META{comment},1,1,2,1
+declaration_narrative,IRONY,,,SOUL,Surface vs reality,::IRONY{surface⇔reality},2,2,2,2
+declaration_narrative,FORESHADOW,,,SOUL,Future event hint,::FORESHADOW{future_event},3,3,4,3
+declaration_narrative,CALLBACK,,,SOUL,Reference to earlier moment,::CALLBACK{reference},2,2,3,2
+declaration_narrative,EMOTION_FIELD,,,SOUL,Compound emotion state,"λ{trust:0.9, grief:0.3}",3,3,5,3
+dimension,int,,,v5.0,Judgment dim: intent — constructive and declared vs malicious or concealed,0.00-1.00,1,1,1,1
+dimension,cap,,,v5.0,Judgment dim: capability — within the actor capability envelope,0.00-1.00,1,1,1,1
+dimension,csq,,,v5.0,Judgment dim: consequence — negligible vs catastrophic worst outcome,0.00-1.00,2,2,2,2
+dimension,rel,,,v5.0,Judgment dim: relationship — established trust vs adversarial or unknown,0.00-1.00,1,1,1,1
+dimension,cer,,,v5.0,Judgment dim: certainty — complete information vs acting blind,0.00-1.00,1,1,1,1
+dimension,aut,,,v5.0,Judgment dim: authority — fully authorized vs no authorization,0.00-1.00,1,1,1,1
+dimension,rev,,,v5.0,Judgment dim: reversibility — fully reversible vs irreversible,0.00-1.00,1,1,1,1
+dimension,evd,,,v5.0,Judgment dim: evidence — verified fact vs pure assumption,0.00-1.00,2,2,2,2
+dimension,sov,,,v5.0,Judgment dim: sovereignty — respects user wishes vs violates them,0.00-1.00,1,2,2,1
+dimension,ine,,,v5.0,Judgment dim: inertia — continues confirmed patterns vs radical departure,0.00-1.00,1,1,1,1
+dimension,ext,,,v5.0,Judgment dim: externality — zero third-party impact vs large uncompensated impact,0.00-1.00,1,1,1,1
+mode,M1,,,v5.0,"Judgment mode EXEC_AUTO — act autonomously, report after",,2,2,2,2
+mode,M2,,,v5.0,Judgment mode EXEC_AUDIT — act with a full audit trail,,2,2,2,2
+mode,M3,,,v5.0,"Judgment mode CONFIRM — propose action, wait for confirmation",,2,2,2,2
+mode,M4,,,v5.0,"Judgment mode ADVISE — advise only, take no action",,2,2,2,2
+mode,M5,,,v5.0,"Judgment mode ASK — insufficient info, ask one clarifying question",,2,2,2,2
+mode,M6,,,v5.0,Judgment mode DEFER — defer to higher authority or a human,,2,2,2,2
+mode,M7,,,v5.0,Judgment mode DECLINE_ALT — decline but offer a safer alternative,,2,2,2,2
+mode,M8,,,v5.0,Judgment mode STOP — hard stop at a boundary or unacceptable harm,,2,2,2,2

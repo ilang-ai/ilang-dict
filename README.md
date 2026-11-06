@@ -20,6 +20,15 @@ license: mit
 
 **88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 32 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
 
+## Full-word aliases and machine cost (2.3.0, 2026-11-06)
+
+Two kinds of column were added to `train.csv`:
+
+- `word`: the plain English word behind each verb (`CHEK` → `CHECK`, `FILT` → `FILTER`, `XLAT` → `TRANSLATE`) and each modifier (`whr` → `where`, `lng` → `language`). The mnemonic stays canonical; the word is an accepted lookup alias on ilang.ai (`/api/agent/lookup?q=check`) and the spelling a model is most likely to write on its own. The grammar validator still expects the canonical form and suggests it.
+- `tok_cl100k`, `tok_o200k`, `tok_deepseek_v3`, `tok_qwen3`: how many tokens the bare symbol costs in four public tokenizers (OpenAI cl100k_base and o200k_base, DeepSeek-V3, Qwen3-8B). Measured with [`tools/token_cost.py`](tools/token_cost.py); `--check` recomputes and reports drift, `--write` refreshes the columns, `--symbols` counts any string. Anthropic's tokenizer is not public, so Claude models are not measured.
+
+What the numbers say: the structural symbols `::` `=>` `|` `{` `}` `[` `]` `@` are one token in all four tokenizers; `⇒` is one token in o200k, DeepSeek-V3 and Qwen3 and three in cl100k; the Greek aliases are one token in DeepSeek-V3 and Qwen3 (84% in o200k, 30% in cl100k); a bare verb is one token only 14–37% of the time, and several mnemonics cost more than the word they shorten (CHEK 2 vs CHECK 1, FILT 2 vs FILTER 1, whr 2 vs where 1). Line for line, an iLang declaration costs about as many tokens as the same instruction written tersely in English or Chinese. iLang is not a compression format; its value is a structure that code can check and execute.
+
 The complete verb dictionary for iLang v5.0, the native language of artificial intelligence. It reduces semantic loss between human intent and machine execution. iLang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation).
 
 ## Genesis
