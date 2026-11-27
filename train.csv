@@ -101,7 +101,7 @@ modifier,top,,top,modifier,Top N,integer,1,1,1,1
 modifier,bot,,bottom,modifier,Bottom N,integer,1,1,1,1
 modifier,srt,,sort,modifier,Sort by,field name,2,2,2,2
 modifier,grp,,group,modifier,Group by,field name,1,1,2,1
-modifier,whr,,where,modifier,Filter condition,condition string,2,2,2,2
+modifier,whr,,where,modifier,Filter condition,condition string; inside media operations also a region entity or an entity holding a mask (v4.2),2,2,2,2
 modifier,mch,,match,modifier,Match pattern,glob (default) or regex with typ=regex,2,2,2,2
 modifier,exc,,exclude,modifier,Exclude pattern,glob or regex,1,1,1,1
 modifier,dep,,depth,modifier,Depth,integer,1,1,1,1
@@ -136,6 +136,10 @@ modifier,adh,,adherence,media,Adherence to the stated instruction,0.00-1.00,1,1,
 modifier,ref,,reference,media,Reference asset or declared preset,"@ENTITY, URI",1,1,1,1
 modifier,dlg,,dialogue,media,Verbatim spoken lines,quoted string,1,1,2,1
 modifier,sfx,,sound,media,Non-speech sound,free text; none,2,2,2,2
+region_key,pts,,points,v4.2,Region body key: the object or area that contains the points,"pts:[x,y,...], one or more points",1,1,1,1
+region_key,bnd,,bounds,v4.2,"Region body key: the axis-aligned rectangle with top left corner (x1,y1) and bottom right corner (x2,y2)","bnd:[x1,y1,x2,y2], x1 < x2 and y1 < y2",2,2,2,2
+region_key,vtx,,vertices,v4.2,"Region body key: the polygon through the vertices in order, closed from the last vertex back to the first","vtx:[x1,y1,x2,y2,x3,y3,...], three or more vertices",2,2,2,2
+region_key,msk,,mask,v4.2,Region body key: the area marked by an existing mask asset,"msk:value, a path, URI or entity",2,2,2,2
 entity,@SRC,,,Core,Source payload,,2,2,3,2
 entity,@DST,,,Core,Destination,,3,2,2,3
 entity,@PREV,,,Core,Previous pipe output,,3,3,3,3
@@ -150,7 +154,7 @@ entity,@COS,,,External,Cloud Object Storage,,3,2,2,3
 entity,@DRIVE,,,External,Google Drive,,3,3,3,3
 entity,@WORKER,,,External,Cloudflare Worker,,3,3,3,3
 entity,@CF,,,External,Cloudflare API,,2,2,2,2
-entity,@SYSTEM,,,Role,Protocol-level rules — highest authority,authority:system,2,2,3,2
+entity,@SYSTEM,,,Role,Rules enforced by code outside the model — highest authority,authority:system,2,2,3,2
 entity,@RUNTIME,,,Role,Harness/orchestrator,authority:commit,3,3,4,3
 entity,@GRADER,,,Role,Independent grader,authority:verification,3,3,4,3
 entity,@USER,,,Role,Human principal — owns ::OBJECTIVE,authority:user,2,2,2,2

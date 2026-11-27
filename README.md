@@ -18,13 +18,13 @@ license: mit
 
 **What iLang is.** iLang is I Language, the native language of AI; in human terms, a protocol. The full statement is on [ilang.ai](https://ilang.ai/faq/).
 
-**88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 33 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
+**88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 33 declarations. Includes the v5.0 judgment vocabulary, the v4.1 media profile for image, video and audio, and the four region body keys of v4.2, counted separately.**
 
 ## Full-word aliases and machine cost (2.3.0, 2026-11-06)
 
 Two kinds of column were added to `train.csv`:
 
-- `word`: the plain English word behind each verb (`CHEK` → `CHECK`, `FILT` → `FILTER`, `XLAT` → `TRANSLATE`) and each modifier (`whr` → `where`, `lng` → `language`). The mnemonic stays canonical; the word is an accepted lookup alias on ilang.ai (`/api/agent/lookup?q=check`) and the spelling a model is most likely to write on its own. The grammar validator still expects the canonical form and suggests it.
+- `word`: the plain English word behind each verb (`CHEK` → `CHECK`, `FILT` → `FILTER`, `XLAT` → `TRANSLATE`) and each modifier (`whr` → `where`, `lng` → `language`). The mnemonic stays canonical; the word is an accepted lookup alias on ilang.ai (`/api/agent/lookup?q=check`) and the spelling a model is most likely to write on its own. As of ilang-spec 5.0.19 the grammar validator knows the canonical form only and does not suggest it: `[CHECK:@SRC]=>[FILTER|where=x]=>[Ω]` draws `E304` (unknown verb) twice, `[FILT:@SRC|where=x]=>[Ω]` draws `E302` (unknown modifier), and `[TRANSLATE:@SRC|language=zh]` on a line of its own, with no `=>`, is read as a tag line and draws no finding. `ilang_validate` on ilang.ai reports the same findings and adds `did_you_mean` to an `E302` where it can name the registered modifier (`where` → `whr`, `language` → `lng`); it suggests nothing for a verb.
 - `tok_cl100k`, `tok_o200k`, `tok_deepseek_v3`, `tok_qwen3`: how many tokens the bare symbol costs in four public tokenizers (OpenAI cl100k_base and o200k_base, DeepSeek-V3, Qwen3-8B). Measured with [`tools/token_cost.py`](tools/token_cost.py); `--check` recomputes and reports drift, `--write` refreshes the columns, `--symbols` counts any string. Anthropic's tokenizer is not public, so Claude models are not measured.
 
 What the numbers say: the structural symbols `::` `=>` `|` `{` `}` `[` `]` `@` are one token in all four tokenizers; `⇒` is one token in o200k, DeepSeek-V3 and Qwen3 and three in cl100k; the Greek aliases are one token in DeepSeek-V3 and Qwen3 (84% in o200k, 30% in cl100k); a bare verb is one token only 14–37% of the time, and several mnemonics cost more than the word they shorten (CHEK 2 vs CHECK 1, FILT 2 vs FILTER 1, whr 2 vs where 1). Line for line, an iLang declaration costs about as many tokens as the same instruction written tersely in English or Chinese. iLang is not a compression format; its value is a structure that code can check and execute.
@@ -303,7 +303,7 @@ Judgment is not a verb: v5.0 assessment is expressed by the `::JUDGE` declaratio
 | bot | Bottom N | integer |
 | srt | Sort by | field name |
 | grp | Group by | field name |
-| whr | Filter condition | condition string |
+| whr | Filter condition | condition string; inside media operations also a region entity or an entity holding a mask (v4.2) |
 | mch | Match pattern | glob (default) or regex with typ=regex |
 | exc | Exclude pattern | glob or regex |
 | dep | Depth | integer |
@@ -347,6 +347,28 @@ Registered in [SPEC-v4.1-MEDIA-PROFILE.md](https://github.com/ilang-ai/ilang-spe
 | ref | IMG VID AUD | Reference asset or declared preset | @ENTITY, URI |
 | dlg | VID AUD | Verbatim spoken lines | quoted string |
 | sfx | VID AUD | Non-speech sound | free text; none |
+
+---
+
+## Region Body Keys (4)
+
+Registered in [SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) and added to this dictionary in 2.3.2 (2026-11-27). They are declaration body keys and are counted separately: they are not core modifiers and not media profile keys, and the 29 and the 20 are unchanged. A region is a custom entity whose `::STATE` body carries exactly one of the four on a body line; the keys are in force nowhere else, and written as an operation modifier one of them is unregistered (`[FILL:@IMG|bnd=...]` is `E302`). An operation reaches the region through `whr=`.
+
+| Key | Line form | Selects |
+|-----|-----------|---------|
+| pts | `pts:[x,y,...]`, one or more points | The object or area that contains the points |
+| bnd | `bnd:[x1,y1,x2,y2]` | The axis-aligned rectangle with top left corner (x1,y1) and bottom right corner (x2,y2), where x1 < x2 and y1 < y2 |
+| vtx | `vtx:[x1,y1,x2,y2,x3,y3,...]`, three or more vertices | The polygon through the vertices in order, closed from the last vertex back to the first |
+| msk | `msk:value`, a path, URI or entity | The area marked by an existing mask asset |
+
+Coordinates are written x then y from the top left corner of the frame, either normalised (`0.00` to `1.00`) or in absolute pixels (`120px`), one unit per line. The names are truncations: `pts` for points, `bnd` for bounds, `vtx` for vertices, `msk` for mask; `train.csv` carries these words in its `word` column. The inpaint example of v4.2 §4.7.1:
+
+```
+::STATE{@SKY}
+  bnd:[0.00,0.00,1.00,0.42]
+
+[FILL:@IMG|src=assets/harbour.jpg,whr=@SKY,sbj="low storm clouds",lgt="flat grey daylight"]=>[WRIT:@LOCAL|path=out/harbour-storm.png]
+```
 
 ---
 
@@ -495,7 +517,8 @@ Full grammar: [SPEC-v5.0.md, Part III](https://github.com/ilang-ai/ilang-spec/bl
 ## Dataset File
 
 [train.csv](train.csv) carries the full registry as rows of
-`type,name,alias,category,meaning,values`. Row types: `verb` (88), `modifier` (49: 29 core, plus 20 media profile rows with category `media`),
+`type,name,alias,word,category,meaning,values,tok_cl100k,tok_o200k,tok_deepseek_v3,tok_qwen3`. Row types: `verb` (88), `modifier` (49: 29 core, plus 20 media profile rows with category `media`),
+`region_key` (the 4 region body keys of v4.2, counted separately from the modifiers),
 `entity` (25: Core + External + Role + Media), `declaration` (33 structural),
 `declaration_narrative` (13 SOUL), `dimension` (the 11 judgment dimensions),
 `mode` (M1–M8).
@@ -509,6 +532,7 @@ Full grammar: [SPEC-v5.0.md, Part III](https://github.com/ilang-ai/ilang-spec/bl
 | Protocol Spec | [ilang-ai/ilang-spec](https://github.com/ilang-ai/ilang-spec) |
 | Declaration grammar + entity registry | [SPEC-v5.0.md, Part III](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0.md) |
 | Media profile (v4.1) | [SPEC-v4.1-MEDIA-PROFILE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.1-MEDIA-PROFILE.md) |
+| Media regions and image layers (v4.2) | [SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) |
 | Website | [ilang.ai](https://ilang.ai) |
 | Dictionary (web) | [ilang.ai/dictionary/](https://ilang.ai/dictionary/) |
 | All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
