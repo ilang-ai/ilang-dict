@@ -4,7 +4,7 @@ title: "iLang Dictionary: the complete vocabulary of the iLang protocol"
 abstract: >-
   The complete reference vocabulary for iLang v5.0: 88 verbs in 9 categories,
   13 Greek aliases, 29 core modifiers plus the 20-key media profile, 25
-  entities (17 addressable and 8 role) and 32 declarations, including the v5.0
+  entities (17 addressable and 8 role) and 33 declarations, including the v5.0
   judgment vocabulary and the v4.1 media profile for image, video and audio.
   The repository ships the human-readable dictionary and a CSV table of the
   same entries for machine use.
@@ -17,8 +17,8 @@ authors:
 repository-code: "https://github.com/ilang-ai/ilang-dict"
 url: "https://github.com/ilang-ai/ilang-dict"
 license: MIT
-version: "2.3.0"
-date-released: "2026-11-06"
+version: "2.3.1"
+date-released: "2026-11-26"
 keywords:
   - iLang
   - dictionary

@@ -18,7 +18,7 @@ license: mit
 
 **What iLang is.** iLang is I Language, the native language of AI; in human terms, a protocol. The full statement is on [ilang.ai](https://ilang.ai/faq/).
 
-**88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 32 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
+**88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. 25 entities (17 addressable, 8 role). 33 declarations. Includes the v5.0 judgment vocabulary and the v4.1 media profile for image, video and audio.**
 
 ## Full-word aliases and machine cost (2.3.0, 2026-11-06)
 
@@ -425,7 +425,7 @@ entities under this rule, not registry additions.
 
 ---
 
-## Declarations (32 structural + 13 narrative)
+## Declarations (33 structural + 13 narrative)
 
 Structural declarations, by layer:
 
@@ -434,11 +434,17 @@ Structural declarations, by layer:
 | v3.0 communication | 14 | `::STATE` `::TRUST` `::ALIVE` `::MEMORY` `::GENE` `::GENE_MUTABLE` `::RULE` `::ACTIVATE` `::FACT` `::LESSON` `::PROGRESS` `::PRIORITY` `::DECAY` `::IMMUNE` |
 | v4.0 execution | 8 | `::UNTRUSTED` `::BUDGET` `::STATUS` `::OBJECTIVE` `::RUBRIC` `::EVIDENCE` `::PRIOR` `::FALLBACK` |
 | v5.0 judgment | 9 | `::JUDGE` `::BOUNDARY` `::DIM` `::MODE` `::FUNC` `::SCHEMA` `::CASE` `::CLAUSE` `::MODULE` |
-| PATCH-2 amendment | 1 | `::LIST` |
+| PATCH-2 amendment | 2 | `::LIST` `::EXCLUDE` |
 
 `::LIST` is an enumeration block registered 2026-08-11 through the PATCH-2 §1.5
 amendment channel: the header names the collection (`::LIST{@REPOS}`), the body is
 one prose line per item.
+
+`::EXCLUDE` is an elimination block registered 2026-11-08 through the same channel
+and added to this dictionary in 2.3.1 (2026-11-26): the header names the gap and
+carries the trail
+(`::EXCLUDE{id|candidates:a;b;c|out:a(constant);b(constant)|left:c|conf:level|by:source}`);
+`candidates`, `out` and `left` are required.
 
 Narrative (SOUL layer, v3.0 §7), 13: `::SAY` `::THINK` `::ACT` `::DECIDE` `::DISCOVER`
 `::CREATE` `::EVENT` `::SILENCE` `::META` `::IRONY` `::FORESHADOW` `::CALLBACK`
@@ -447,7 +453,7 @@ Narrative (SOUL layer, v3.0 §7), 13: `::SAY` `::THINK` `::ACT` `::DECIDE` `::DI
 Every declaration takes one of three block shapes (inline, header + indented body,
 brace span), and every body line takes one of eight forms (`T:`/`A:` traits, fields,
 structured fields, vectors, tags, prose, nested declarations, operation chains).
-Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/archive/SPEC-v5.0-PATCH-2.md)
+Full grammar: [SPEC-v5.0.md, Part III](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0.md)
 
 ---
 
@@ -490,7 +496,7 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 
 [train.csv](train.csv) carries the full registry as rows of
 `type,name,alias,category,meaning,values`. Row types: `verb` (88), `modifier` (49: 29 core, plus 20 media profile rows with category `media`),
-`entity` (25: Core + External + Role + Media), `declaration` (32 structural),
+`entity` (25: Core + External + Role + Media), `declaration` (33 structural),
 `declaration_narrative` (13 SOUL), `dimension` (the 11 judgment dimensions),
 `mode` (M1–M8).
 
@@ -501,7 +507,7 @@ Full grammar: [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob
 | Resource | Link |
 |----------|------|
 | Protocol Spec | [ilang-ai/ilang-spec](https://github.com/ilang-ai/ilang-spec) |
-| Declaration grammar + entity registry | [SPEC-v5.0-PATCH-2.md](https://github.com/ilang-ai/ilang-spec/blob/main/archive/SPEC-v5.0-PATCH-2.md) |
+| Declaration grammar + entity registry | [SPEC-v5.0.md, Part III](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v5.0.md) |
 | Media profile (v4.1) | [SPEC-v4.1-MEDIA-PROFILE.md](https://github.com/ilang-ai/ilang-spec/blob/main/SPEC-v4.1-MEDIA-PROFILE.md) |
 | Website | [ilang.ai](https://ilang.ai) |
 | Dictionary (web) | [ilang.ai/dictionary/](https://ilang.ai/dictionary/) |

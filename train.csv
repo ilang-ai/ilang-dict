@@ -193,6 +193,7 @@ declaration,CASE,,,v5.0,Anchor or boundary scenario,::CASE{dim:rev|anchor:0.50|l
 declaration,CLAUSE,,,v5.0,Normative statement block,::CLAUSE{NAME|conf:level|scope:context} + T:/A: body,2,2,2,2
 declaration,MODULE,,,v5.0,Compound-name prose module (brace span),::MODULE::NAME{ [TAG] lines + prose },1,1,2,1
 declaration,LIST,,,PATCH-2,"Enumeration block — header names the collection, one prose line per item",::LIST{@NAME},1,1,1,1
+declaration,EXCLUDE,,,PATCH-2,Elimination block — header names the gap and carries the trail,::EXCLUDE{id|candidates:a;b;c|out:a(constant);b(constant)|left:c|conf:level|by:source},2,2,2,2
 declaration_narrative,SAY,,,SOUL,Dialogue between entities,::SAY{@FROM→@TO}{content},2,2,2,2
 declaration_narrative,THINK,,,SOUL,Internal thought,::THINK{@ENTITY}{content},2,2,2,2
 declaration_narrative,ACT,,,SOUL,Action taken,::ACT{@ENTITY}{action},1,1,1,1
